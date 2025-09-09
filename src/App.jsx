@@ -1,54 +1,51 @@
 import React, { useState, useEffect } from 'react';
 
-// --- MOCK DATA ---
-// You can replace this with your actual data
 const portfolioData = {
-    name: "James B.",
-    title: "Software Engineer",
-    location: "New York, NY",
-    email: "hello@jimb.is",
+    name: "James Barry",
+    title: "Software Engineer & Researcher",
+    location: "College Park, MD",
+    email: "james.j.barry@icloud.com",
     socials: {
-        github: "https://github.com/yourusername",
-        linkedin: "https://linkedin.com/in/yourusername",
-        twitter: "https://twitter.com/yourusername",
+        github: "https://github.com/James-J-Barry",
+        linkedin: "https://linkedin.com/in/James-J-Barry",
     },
-    about: "I'm a passionate software engineer with a knack for building elegant solutions to complex problems. I specialize in full-stack development with a focus on creating performant and user-friendly web applications. When I'm not coding, you can find me exploring new technologies or contributing to open-source projects.",
+    about: "I'm a Computer Science student at the University of Maryland with a passion for building scalable, efficient software solutions. My experience ranges from developing data science pipelines on high-performance computing clusters to creating user-facing web applications and browser extensions. I am deeply interested in NLP, parallel computing, and quantum machine learning.",
     experience: [
         {
-            company: "Tech Solutions Inc.",
-            role: "Senior Software Engineer",
-            period: "Jan 2021 - Present",
-            description: "Led the development of a new client-facing analytics dashboard using React and D3.js. Mentored junior developers and improved code quality by implementing a new CI/CD pipeline, reducing build times by 30%.",
-            skills: ["React", "Node.js", "TypeScript", "AWS", "CI/CD"]
+            company: "Parsons Corporation & Army Research Lab DSRC",
+            role: "Software Engineer & Data Scientist Intern",
+            period: "Jun 2025 - Aug 2025",
+            description: "Built and deployed a scalable evaluation system for semantic similarity algorithms on Army Test Incident Reports. Improved search precision by over 280% using multi-stage LLM summarization pipelines and cut processing time by 8x by parallelizing analysis across an 8-node HPC cluster. Designed and created reproducible, documented Python tooling for long-term research integration.",
+            skills: ["Python", "HPC", "PBS", "NLP", "Prompt Engineering", "GitLab"]
         },
         {
-            company: "Innovate Co.",
-            role: "Software Engineer",
-            period: "Jun 2018 - Dec 2020",
-            description: "Developed and maintained features for a large-scale e-commerce platform. Worked across the stack with Python (Django) and JavaScript (Vue.js). Contributed to a 15% improvement in page load times through performance optimization.",
-            skills: ["Python", "Django", "Vue.js", "PostgreSQL", "Docker"]
+            company: "First Year Innovation and Research Experience (FIRE)",
+            role: "Quantum Machine Learning Researcher",
+            period: "Jan 2025 - Present",
+            description: "Developing a strong foundational understanding of quantum computing and machine learning through hands-on research in collaboration with the QLab Quantum research lab. Executing projects centered on quantum software, hardware, and data analysis using state-of-the-art tools.",
+            skills: ["Quantum Machine Learning", "Python", "Data Analysis", "Research"]
+        },
+        {
+            company: "Bitcamp",
+            role: "Logistics and Hardware Organizer",
+            period: "Oct 2024 - May 2025",
+            description: "As part of the organizing team for UMD's premier hackathon, I secured and managed hardware for over 1,400 participants. I also utilized CAD software to design and construct a large collaborative art piece for the event.",
+            skills: ["Project Management", "Logistics", "CAD", "Hardware"]
         }
     ],
     projects: [
         {
-            name: "Project Alpha",
-            description: "A real-time collaborative code editor built with WebSockets and Monaco Editor. Allows multiple users to code in the same environment simultaneously.",
-            stack: ["React", "Node.js", "WebSocket", "Monaco"],
-            link: "https://github.com/yourusername/project-alpha",
-            live: "https://project-alpha.example.com"
-        },
-        {
-            name: "Data Visualizer",
-            description: "A web application for creating beautiful and interactive charts from CSV data. Built with a focus on performance and usability.",
-            stack: ["Next.js", "D3.js", "Tailwind CSS"],
-            link: "https://github.com/yourusername/data-visualizer",
+            name: "High-Vis Grades for Gradescope",
+            description: "A Chrome Extension addressing a key limitation in the Gradescope platform for 40,000+ UMD students. It injects a script to automatically calculate and display weighted course grades.",
+            stack: ["JavaScript", "Chrome APIs", "DOM Manipulation", "HTML"],
+            link: "https://github.com/James-J-Barry", // Update with specific repo link if available
             live: null
         },
         {
-            name: "E-commerce API",
-            description: "A robust RESTful API for an e-commerce platform, featuring authentication, product management, and order processing.",
-            stack: ["Python", "FastAPI", "PostgreSQL", "Docker"],
-            link: "https://github.com/yourusername/ecommerce-api",
+            name: "RecipEZ - HopHacks Project",
+            description: "An online recipe database created at HopHacks to store recipes and nutrition info for users with dietary restrictions. Features a web app for users to search for and contribute recipes.",
+            stack: ["TypeScript", "React", "Node.js", "MongoDB", "Auth0"],
+            link: "https://github.com/James-J-Barry", // Update with specific repo link if available
             live: null
         }
     ]
@@ -63,11 +60,6 @@ const GithubIcon = () => (
 const LinkedinIcon = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-linkedin">
         <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle>
-    </svg>
-);
-const TwitterIcon = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-twitter">
-        <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
     </svg>
 );
 const MailIcon = () => (
@@ -111,7 +103,6 @@ const HomePage = ({ navigate }) => {
                 <div className="flex items-center space-x-6">
                     <a href={portfolioData.socials.github} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors"><GithubIcon /></a>
                     <a href={portfolioData.socials.linkedin} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors"><LinkedinIcon /></a>
-                    <a href={portfolioData.socials.twitter} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors"><TwitterIcon /></a>
                     <a href={`mailto:${portfolioData.email}`} className="text-gray-400 hover:text-white transition-colors"><MailIcon /></a>
                 </div>
             </section>
