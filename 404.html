@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jim B. - Portfolio</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+    <script type="text/javascript">
+  // Single Page Apps for GitHub Pages
+  // [https://github.com/rafgraph/spa-github-pages](https://github.com/rafgraph/spa-github-pages)
+  // This script takes the current url and converts the path and query
+  // string into just a query string, and then redirects the browser
+  // to the new url with the new query string and a hash redirect.
+  // It is necessary for single-page apps hosted on GitHub Pages.
+  (function(l) {
+    if (l.search[1] === '/' ) {
+      var decoded = l.search.slice(1).split('&').map(function(s) {
+        return s.replace(/~and~/g, '&')
+      }).join('?');
+      window.history.replaceState(null, null,
+          l.pathname.slice(0, -1) + decoded + l.hash
+      );
+    }
+  }(window.location))
+</script>
+  </body>
+</html>
