@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 // --- MOCK DATA ---
 // You can replace this with your actual data
 const portfolioData = {
-    name: "Jim B.",
+    name: "James B.",
     title: "Software Engineer",
     location: "New York, NY",
     email: "hello@jimb.is",
@@ -120,8 +120,8 @@ const HomePage = ({ navigate }) => {
             <section className="max-w-4xl mx-auto px-4">
                 <h2 className="text-3xl font-bold text-white mb-8 text-center">Recent Experience</h2>
                 <div className="space-y-8">
-                    {portfolioData.experience.slice(0, 1).map((job, index) => (
-                        <div key={index} className="relative pl-8 border-l-2 border-gray-700">
+                    {portfolioData.experience.slice(0, 1).map((job) => (
+                        <div key={job.company} className="relative pl-8 border-l-2 border-gray-700">
                             <div className="absolute w-4 h-4 bg-teal-500 rounded-full -left-2 top-1"></div>
                             <p className="text-sm font-semibold text-teal-400 mb-1">{job.period}</p>
                             <h3 className="text-2xl font-bold text-white">{job.role}</h3>
@@ -146,8 +146,8 @@ const HomePage = ({ navigate }) => {
             <section className="max-w-6xl mx-auto px-4">
                 <h2 className="text-3xl font-bold text-white mb-8 text-center">Featured Projects</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {portfolioData.projects.slice(0, 3).map((project, index) => (
-                        <div key={index} className="bg-gray-800 rounded-lg p-6 flex flex-col hover:shadow-lg hover:shadow-teal-500/20 transition-shadow">
+                    {portfolioData.projects.slice(0, 3).map((project) => (
+                        <div key={project.name} className="bg-gray-800 rounded-lg p-6 flex flex-col hover:shadow-lg hover:shadow-teal-500/20 transition-shadow">
                             <h3 className="text-xl font-bold text-white mb-2">{project.name}</h3>
                             <p className="text-gray-400 flex-grow mb-4">{project.description}</p>
                             <div className="flex flex-wrap gap-2 mb-4">
@@ -185,8 +185,8 @@ const ExperiencePage = () => (
     <div className="max-w-4xl mx-auto p-4 md:p-8">
         <h1 className="text-4xl font-bold text-white mb-8 text-center">Work Experience</h1>
         <div className="space-y-12">
-            {portfolioData.experience.map((job, index) => (
-                <div key={index} className="relative pl-8 border-l-2 border-gray-700">
+            {portfolioData.experience.map((job) => (
+                <div key={job.company} className="relative pl-8 border-l-2 border-gray-700">
                     <div className="absolute w-4 h-4 bg-teal-500 rounded-full -left-2 top-1"></div>
                     <p className="text-sm font-semibold text-teal-400 mb-1">{job.period}</p>
                     <h3 className="text-2xl font-bold text-white">{job.role}</h3>
@@ -207,8 +207,8 @@ const ProjectsPage = () => (
     <div className="max-w-6xl mx-auto p-4 md:p-8">
         <h1 className="text-4xl font-bold text-white mb-8 text-center">My Projects</h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {portfolioData.projects.map((project, index) => (
-                <div key={index} className="bg-gray-800 rounded-lg p-6 flex flex-col hover:shadow-lg hover:shadow-teal-500/20 transition-shadow">
+            {portfolioData.projects.map((project) => (
+                <div key={project.name} className="bg-gray-800 rounded-lg p-6 flex flex-col hover:shadow-lg hover:shadow-teal-500/20 transition-shadow">
                     <h3 className="text-xl font-bold text-white mb-2">{project.name}</h3>
                     <p className="text-gray-400 flex-grow mb-4">{project.description}</p>
                     <div className="flex flex-wrap gap-2 mb-4">
@@ -361,8 +361,14 @@ export default function App() {
 
     // Function to handle navigation clicks from the Header
     const navigate = (path) => {
-        // Update the browser's history and URL
-        window.history.pushState({}, '', path);
+        try {
+            // This will work on a live server but might fail in sandboxed environments like the preview
+            window.history.pushState({}, '', path);
+        } catch (error) {
+            console.warn("Could not push state to history due to sandbox restrictions:", error);
+            // Fallback for environments where pushState is restricted.
+            // The page will still change, just the URL bar won't update in the preview.
+        }
         // Update the state to re-render the correct page
         setCurrentPage(path);
     };
@@ -385,11 +391,17 @@ export default function App() {
     return (
         <div className="bg-gray-900 min-h-screen font-sans text-gray-100 flex flex-col">
             <Header currentPage={currentPage} navigate={navigate} />
-            {/* Removed the "container" and "mx-auto" classes to allow the main content to fill the screen width */}
-            <main className="flex-grow w-full px-4 sm:px-6 lg:px-8 py-8">
-                {renderPage()}
+            {/* This new structure for main ensures content is centered.
+              1. The main tag is a full-width block that grows to fill space.
+              2. The inner div acts as a container, handling centering, max-width, and padding.
+            */}
+            <main className="flex-grow w-full py-8">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    {renderPage()}
+                </div>
             </main>
             <Footer />
         </div>
     );
 }
+
