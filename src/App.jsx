@@ -1,8 +1,22 @@
 import React, { useState, useEffect } from 'react';
 
+// --- PORTFOLIO DATA ---
 const portfolioData = {
     name: "James Barry",
     title: "Software Engineer & Researcher",
+    // Animated hero statements to cycle through
+    heroStatements: [
+        "a software engineer.",
+        "a problem solver.",
+        "a researcher.",
+        "a creator.",
+        "a scientist.",
+        "ready to build."
+    ],
+    // Add the URL to your professional headshot here
+    imageUrl: "/profpic.jpeg",
+    // Add the path to your resume PDF (must be in the /public folder)
+    resumeUrl: "/JamesBarryResume.pdf",
     location: "College Park, MD",
     email: "james.j.barry@icloud.com",
     socials: {
@@ -82,12 +96,71 @@ const XIcon = () => (
         <line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line>
     </svg>
 );
+const DownloadIcon = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-download">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line>
+    </svg>
+);
+
+
+// --- HELPER COMPONENTS ---
+
+const Typewriter = ({ statements }) => {
+    const [index, setIndex] = useState(0);
+    const [subIndex, setSubIndex] = useState(0);
+    const [reverse, setReverse] = useState(false);
+    const [blink, setBlink] = useState(true);
+
+    useEffect(() => {
+        if (subIndex === statements[index].length + 1 && !reverse) {
+            setReverse(true);
+            return;
+        }
+
+        if (subIndex === 0 && reverse) {
+            setReverse(false);
+            setIndex((prev) => (prev + 1) % statements.length);
+            return;
+        }
+        
+        const timeout = setTimeout(() => {
+            setSubIndex((prev) => prev + (reverse ? -1 : 1));
+        }, reverse ? 45 : subIndex === statements[index].length ? 1500 : 100);
+
+        return () => clearTimeout(timeout);
+    }, [subIndex, index, reverse, statements]);
+
+    // Blinking cursor effect
+    useEffect(() => {
+        const timeout2 = setTimeout(() => {
+            setBlink(prev => !prev);
+        }, 500);
+        return () => clearTimeout(timeout2);
+    }, [blink]);
+
+    return (
+        <span className="inline-flex items-center">
+            jimb<span className="text-emerald-400">.is</span>&nbsp;
+            <span className="text-sky-400">
+                {`${statements[index].substring(0, subIndex)}`}
+            </span>
+            <span className={`transition-opacity duration-300 ${blink ? "opacity-100" : "opacity-0"}`}>
+                _
+            </span>
+        </span>
+    );
+};
 
 
 // --- PAGE COMPONENTS ---
 
 const HomePage = ({ navigate }) => {
-    // The navigate function is passed down from App to handle routing
+    const [loaded, setLoaded] = useState(false);
+    useEffect(() => {
+        const timer = setTimeout(() => setLoaded(true), 100);
+        return () => clearTimeout(timer);
+    }, []);
+
     const handleNavClick = (e, path) => {
         e.preventDefault();
         navigate(path);
@@ -96,14 +169,26 @@ const HomePage = ({ navigate }) => {
     return (
         <div className="space-y-16 md:space-y-24">
             {/* --- Hero/About Section --- */}
-            <section className="flex flex-col items-center justify-center text-center p-8">
-                <h1 className="text-5xl md:text-7xl font-bold text-white mb-4">{portfolioData.name}</h1>
-                <h2 className="text-2xl md:text-3xl font-light text-gray-300 mb-6">{portfolioData.title}</h2>
-                <p className="max-w-2xl text-gray-400 mb-8">{portfolioData.about}</p>
-                <div className="flex items-center space-x-6">
-                    <a href={portfolioData.socials.github} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors"><GithubIcon /></a>
-                    <a href={portfolioData.socials.linkedin} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors"><LinkedinIcon /></a>
-                    <a href={`mailto:${portfolioData.email}`} className="text-gray-400 hover:text-white transition-colors"><MailIcon /></a>
+            <section className="flex flex-col md:flex-row items-center justify-center text-center md:text-left p-8 space-y-8 md:space-y-0 md:space-x-12 lg:space-x-24 min-h-[60vh]">
+                <div className="md:w-2/3 max-w-2xl">
+                    <h1 className={`text-4xl md:text-6xl xl:text-7xl 2xl:text-8xl font-bold text-white mb-2 transition-all duration-700 ease-out ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>{portfolioData.name}</h1>
+                    <h2 className={`text-xl md:text-2xl xl:text-3xl font-light text-stone-300 mb-4 h-8 transition-all duration-700 ease-out delay-150 ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+                        <Typewriter statements={portfolioData.heroStatements} />
+                    </h2>
+                    <p className={`max-w-xl text-stone-400 lg:text-lg mb-6 mx-auto md:mx-0 transition-all duration-700 ease-out delay-300 ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>{portfolioData.about}</p>
+                    <div className={`flex items-center justify-center md:justify-start space-x-6 transition-all duration-700 ease-out delay-500 ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+                        <a href={portfolioData.socials.github} target="_blank" rel="noopener noreferrer" className="text-stone-400 hover:text-white transition-transform hover:scale-110"><GithubIcon /></a>
+                        <a href={portfolioData.socials.linkedin} target="_blank" rel="noopener noreferrer" className="text-stone-400 hover:text-white transition-transform hover:scale-110"><LinkedinIcon /></a>
+                        <a href={`mailto:${portfolioData.email}`} className="text-stone-400 hover:text-white transition-transform hover:scale-110"><MailIcon /></a>
+                        <a href={portfolioData.resumeUrl} download title="Download Resume" className="text-stone-400 hover:text-white transition-transform hover:scale-110"><DownloadIcon /></a>
+                    </div>
+                </div>
+                <div className="md:w-1/3 flex-shrink-0">
+                    <img 
+                        src={portfolioData.imageUrl} 
+                        alt="James Barry" 
+                        className={`w-48 h-48 md:w-64 md:h-64 xl:w-72 xl:h-72 2xl:w-80 2xl:h-80 rounded-full mx-auto md:mx-0 object-cover border-4 border-stone-700 shadow-lg transition-all duration-1000 ease-out ${loaded ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}
+                    />
                 </div>
             </section>
             
@@ -112,22 +197,22 @@ const HomePage = ({ navigate }) => {
                 <h2 className="text-3xl font-bold text-white mb-8 text-center">Recent Experience</h2>
                 <div className="space-y-8">
                     {portfolioData.experience.slice(0, 1).map((job) => (
-                        <div key={job.company} className="relative pl-8 border-l-2 border-gray-700">
-                            <div className="absolute w-4 h-4 bg-teal-500 rounded-full -left-2 top-1"></div>
-                            <p className="text-sm font-semibold text-teal-400 mb-1">{job.period}</p>
+                         <div key={job.company} className={`relative pl-8 border-l-2 border-stone-700 group transition-all duration-700 ease-out ${loaded ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'}`}>
+                             <div className="absolute w-4 h-4 bg-emerald-500 rounded-full -left-2 top-1 border-2 border-stone-900 group-hover:bg-emerald-400 transition-colors"></div>
+                            <p className="text-sm font-semibold text-emerald-400 mb-1">{job.period}</p>
                             <h3 className="text-2xl font-bold text-white">{job.role}</h3>
-                            <h4 className="text-lg font-medium text-gray-300 mb-3">{job.company}</h4>
-                            <p className="text-gray-400 mb-4">{job.description}</p>
+                            <h4 className="text-lg font-medium text-stone-300 mb-3">{job.company}</h4>
+                            <p className="text-stone-400 mb-4">{job.description}</p>
                             <div className="flex flex-wrap gap-2">
                                 {job.skills.map(skill => (
-                                    <span key={skill} className="bg-gray-700 text-gray-300 text-xs font-medium px-2.5 py-1 rounded-full">{skill}</span>
+                                    <span key={skill} className="bg-stone-800 text-stone-300 text-xs font-medium px-2.5 py-1 rounded-full">{skill}</span>
                                 ))}
                             </div>
                         </div>
                     ))}
                 </div>
                 <div className="text-center mt-12">
-                    <a href="/experience" onClick={(e) => handleNavClick(e, '/experience')} className="inline-block bg-teal-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-teal-500 transition-colors">
+                    <a href="/experienced" onClick={(e) => handleNavClick(e, '/experienced')} className="inline-block bg-emerald-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-emerald-500 transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
                         View Full Experience
                     </a>
                 </div>
@@ -138,21 +223,21 @@ const HomePage = ({ navigate }) => {
                 <h2 className="text-3xl font-bold text-white mb-8 text-center">Featured Projects</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {portfolioData.projects.slice(0, 3).map((project) => (
-                        <div key={project.name} className="bg-gray-800 rounded-lg p-6 flex flex-col hover:shadow-lg hover:shadow-teal-500/20 transition-shadow">
+                        <div key={project.name} className="bg-stone-800 rounded-lg p-6 flex flex-col transform hover:-translate-y-2 transition-transform duration-300 shadow-lg hover:shadow-emerald-500/20">
                             <h3 className="text-xl font-bold text-white mb-2">{project.name}</h3>
-                            <p className="text-gray-400 flex-grow mb-4">{project.description}</p>
+                            <p className="text-stone-400 flex-grow mb-4">{project.description}</p>
                             <div className="flex flex-wrap gap-2 mb-4">
                                 {project.stack.map(tech => (
-                                    <span key={tech} className="bg-gray-700 text-gray-300 text-xs font-medium px-2.5 py-1 rounded-full">{tech}</span>
+                                    <span key={tech} className="bg-stone-700 text-stone-300 text-xs font-medium px-2.5 py-1 rounded-full">{tech}</span>
                                 ))}
                             </div>
-                            <div className="mt-auto pt-4 border-t border-gray-700 flex items-center space-x-4 text-sm">
-                                <a href={project.link} target="_blank" rel="noopener noreferrer" className="flex items-center text-teal-400 hover:text-teal-300 transition-colors">
+                            <div className="mt-auto pt-4 border-t border-stone-700 flex items-center space-x-4 text-sm">
+                                <a href={project.link} target="_blank" rel="noopener noreferrer" className="flex items-center text-emerald-400 hover:text-emerald-300 transition-colors">
                                     <GithubIcon />
                                     <span className="ml-2">Source Code</span>
                                 </a>
                                 {project.live && (
-                                    <a href={project.live} target="_blank" rel="noopener noreferrer" className="flex items-center text-teal-400 hover:text-teal-300 transition-colors">
+                                    <a href={project.live} target="_blank" rel="noopener noreferrer" className="flex items-center text-emerald-400 hover:text-emerald-300 transition-colors">
                                         <LinkIcon />
                                         <span className="ml-1">Live Demo</span>
                                     </a>
@@ -162,7 +247,7 @@ const HomePage = ({ navigate }) => {
                     ))}
                 </div>
                 <div className="text-center mt-12">
-                    <a href="/projects" onClick={(e) => handleNavClick(e, '/projects')} className="inline-block bg-gray-700 text-white font-bold py-3 px-6 rounded-lg hover:bg-gray-600 transition-colors">
+                    <a href="/building" onClick={(e) => handleNavClick(e, '/building')} className="inline-block bg-stone-700 text-white font-bold py-3 px-6 rounded-lg hover:bg-stone-600 transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
                         View All Projects
                     </a>
                 </div>
@@ -172,63 +257,93 @@ const HomePage = ({ navigate }) => {
 };
 
 
-const ExperiencePage = () => (
-    <div className="max-w-4xl mx-auto p-4 md:p-8">
-        <h1 className="text-4xl font-bold text-white mb-8 text-center">Work Experience</h1>
-        <div className="space-y-12">
-            {portfolioData.experience.map((job) => (
-                <div key={job.company} className="relative pl-8 border-l-2 border-gray-700">
-                    <div className="absolute w-4 h-4 bg-teal-500 rounded-full -left-2 top-1"></div>
-                    <p className="text-sm font-semibold text-teal-400 mb-1">{job.period}</p>
-                    <h3 className="text-2xl font-bold text-white">{job.role}</h3>
-                    <h4 className="text-lg font-medium text-gray-300 mb-3">{job.company}</h4>
-                    <p className="text-gray-400 mb-4">{job.description}</p>
-                    <div className="flex flex-wrap gap-2">
-                        {job.skills.map(skill => (
-                            <span key={skill} className="bg-gray-700 text-gray-300 text-xs font-medium px-2.5 py-1 rounded-full">{skill}</span>
-                        ))}
-                    </div>
-                </div>
-            ))}
-        </div>
-    </div>
-);
+const ExperiencePage = () => {
+    const [loaded, setLoaded] = useState(false);
+    useEffect(() => {
+        const timer = setTimeout(() => setLoaded(true), 100);
+        return () => clearTimeout(timer);
+    }, []);
 
-const ProjectsPage = () => (
-    <div className="max-w-6xl mx-auto p-4 md:p-8">
-        <h1 className="text-4xl font-bold text-white mb-8 text-center">My Projects</h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {portfolioData.projects.map((project) => (
-                <div key={project.name} className="bg-gray-800 rounded-lg p-6 flex flex-col hover:shadow-lg hover:shadow-teal-500/20 transition-shadow">
-                    <h3 className="text-xl font-bold text-white mb-2">{project.name}</h3>
-                    <p className="text-gray-400 flex-grow mb-4">{project.description}</p>
-                    <div className="flex flex-wrap gap-2 mb-4">
-                        {project.stack.map(tech => (
-                            <span key={tech} className="bg-gray-700 text-gray-300 text-xs font-medium px-2.5 py-1 rounded-full">{tech}</span>
-                        ))}
+    return (
+        <div className="max-w-4xl mx-auto p-4 md:p-8">
+            <h1 className={`text-4xl xl:text-5xl font-bold text-white mb-12 text-center transition-all duration-700 ease-out ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+                jimb<span className="text-emerald-400">.is</span> <span className="text-sky-400">experienced.</span>
+            </h1>
+            <div className="space-y-12">
+                {portfolioData.experience.map((job, index) => (
+                    <div 
+                        key={job.company} 
+                        className={`relative pl-8 border-l-2 border-stone-700 group transition-all duration-700 ease-out`}
+                        style={{ transitionDelay: `${index * 150}ms` }}
+                    >
+                        <div className={`absolute w-4 h-4 bg-emerald-500 rounded-full -left-2 top-1 border-2 border-stone-900 group-hover:bg-emerald-400 transition-colors ${loaded ? 'opacity-100 scale-100' : 'opacity-0 scale-50'}`}></div>
+                        <div className={`${loaded ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'}`} style={{transition: 'all 700ms ease-out', transitionDelay: `${index * 150 + 50}ms`}}>
+                            <p className="text-sm font-semibold text-emerald-400 mb-1">{job.period}</p>
+                            <h3 className="text-2xl font-bold text-white">{job.role}</h3>
+                            <h4 className="text-lg font-medium text-stone-300 mb-3">{job.company}</h4>
+                            <p className="text-stone-400 mb-4">{job.description}</p>
+                            <div className="flex flex-wrap gap-2">
+                                {job.skills.map(skill => (
+                                    <span key={skill} className="bg-stone-800 text-stone-300 text-xs font-medium px-2.5 py-1 rounded-full">{skill}</span>
+                                ))}
+                            </div>
+                        </div>
                     </div>
-                    <div className="mt-auto pt-4 border-t border-gray-700 flex items-center space-x-4 text-sm">
-                        <a href={project.link} target="_blank" rel="noopener noreferrer" className="flex items-center text-teal-400 hover:text-teal-300 transition-colors">
-                            <GithubIcon />
-                            <span className="ml-2">Source Code</span>
-                        </a>
-                        {project.live && (
-                            <a href={project.live} target="_blank" rel="noopener noreferrer" className="flex items-center text-teal-400 hover:text-teal-300 transition-colors">
-                                <LinkIcon />
-                                <span className="ml-1">Live Demo</span>
-                            </a>
-                        )}
-                    </div>
-                </div>
-            ))}
+                ))}
+            </div>
         </div>
-    </div>
-);
+    );
+};
+
+const ProjectsPage = () => {
+    const [loaded, setLoaded] = useState(false);
+    useEffect(() => {
+        const timer = setTimeout(() => setLoaded(true), 100);
+        return () => clearTimeout(timer);
+    }, []);
+
+    return (
+        <div className="max-w-6xl mx-auto p-4 md:p-8">
+            <h1 className={`text-4xl xl:text-5xl font-bold text-white mb-12 text-center transition-all duration-700 ease-out ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+                jimb<span className="text-emerald-400">.is</span> <span className="text-sky-400">building...</span>
+            </h1>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {portfolioData.projects.map((project, index) => (
+                    <div 
+                        key={project.name} 
+                        className={`bg-stone-800 rounded-lg p-6 flex flex-col transform hover:-translate-y-2 transition-all duration-500 ease-out shadow-lg hover:shadow-emerald-500/20 ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+                        style={{ transitionDelay: `${index * 150}ms` }}
+                    >
+                        <h3 className="text-xl font-bold text-white mb-2">{project.name}</h3>
+                        <p className="text-stone-400 flex-grow mb-4">{project.description}</p>
+                        <div className="flex flex-wrap gap-2 mb-4">
+                            {project.stack.map(tech => (
+                                <span key={tech} className="bg-stone-700 text-stone-300 text-xs font-medium px-2.5 py-1 rounded-full">{tech}</span>
+                            ))}
+                        </div>
+                        <div className="mt-auto pt-4 border-t border-stone-700 flex items-center space-x-4 text-sm">
+                            <a href={project.link} target="_blank" rel="noopener noreferrer" className="flex items-center text-emerald-400 hover:text-emerald-300 transition-colors">
+                                <GithubIcon />
+                                <span className="ml-2">Source Code</span>
+                            </a>
+                            {project.live && (
+                                <a href={project.live} target="_blank" rel="noopener noreferrer" className="flex items-center text-emerald-400 hover:text-emerald-300 transition-colors">
+                                    <LinkIcon />
+                                    <span className="ml-1">Live Demo</span>
+                                </a>
+                            )}
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+    );
+};
 
 const NotFoundPage = () => (
     <div className="text-center p-8">
         <h1 className="text-5xl font-bold text-white mb-4">404</h1>
-        <p className="text-xl text-gray-400">Page Not Found</p>
+        <p className="text-xl text-stone-400">Page Not Found</p>
     </div>
 );
 
@@ -238,8 +353,8 @@ const Header = ({ currentPage, navigate }) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const navLinkClasses = (path, isMobile = false) => {
-        const activeClass = 'bg-gray-900 text-white';
-        const inactiveClass = 'text-gray-300 hover:bg-gray-700 hover:text-white';
+        const activeClass = 'bg-stone-800 text-white';
+        const inactiveClass = 'text-stone-300 hover:bg-stone-700 hover:text-white';
         const mobileClasses = 'block px-3 py-2 rounded-md text-base font-medium';
         const desktopClasses = 'px-3 py-2 rounded-md text-sm font-medium';
         
@@ -252,7 +367,6 @@ const Header = ({ currentPage, navigate }) => {
         setIsMenuOpen(false); // Close menu on navigation
     };
 
-    // Effect to prevent body scroll when mobile menu is open
     useEffect(() => {
         if (isMenuOpen) {
             document.body.style.overflow = 'hidden';
@@ -265,28 +379,26 @@ const Header = ({ currentPage, navigate }) => {
     }, [isMenuOpen]);
 
     return (
-        <header className="bg-gray-800/50 backdrop-blur-sm sticky top-0 z-50">
+        <header className="bg-stone-900/50 backdrop-blur-sm sticky top-0 z-50">
             <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-16">
                     <div className="flex items-center">
-                        <a href="/" onClick={(e) => handleNavClick(e, '/')} className="text-white font-bold text-xl">
-                            {portfolioData.name}
+                        <a href="/" onClick={(e) => handleNavClick(e, '/')} className="text-white font-bold text-xl tracking-tight">
+                           jimb<span className="text-emerald-400">.is</span>
                         </a>
                     </div>
-                    {/* Desktop Menu */}
                     <div className="hidden md:block">
                         <div className="ml-10 flex items-baseline space-x-4">
-                            <a href="/" onClick={(e) => handleNavClick(e, '/')} className={navLinkClasses('/')}>Home</a>
-                            <a href="/experience" onClick={(e) => handleNavClick(e, '/experience')} className={navLinkClasses('/experience')}>Experience</a>
-                            <a href="/projects" onClick={(e) => handleNavClick(e, '/projects')} className={navLinkClasses('/projects')}>Projects</a>
+                            <a href="/" onClick={(e) => handleNavClick(e, '/')} className={navLinkClasses('/')}><span className="text-stone-500 mr-1">...</span>me</a>
+                            <a href="/experienced" onClick={(e) => handleNavClick(e, '/experienced')} className={navLinkClasses('/experienced')}><span className="text-stone-500 mr-1">...</span>experienced</a>
+                            <a href="/building" onClick={(e) => handleNavClick(e, '/building')} className={navLinkClasses('/building')}><span className="text-stone-500 mr-1">...</span>building</a>
                         </div>
                     </div>
-                    {/* Mobile Menu Button */}
                     <div className="-mr-2 flex md:hidden">
                         <button
                             onClick={() => setIsMenuOpen(!isMenuOpen)}
                             type="button"
-                            className="bg-gray-800 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+                            className="bg-stone-800 inline-flex items-center justify-center p-2 rounded-md text-stone-400 hover:text-white hover:bg-stone-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-stone-800 focus:ring-white"
                             aria-controls="mobile-menu"
                             aria-expanded="false"
                         >
@@ -297,13 +409,12 @@ const Header = ({ currentPage, navigate }) => {
                 </div>
             </nav>
 
-            {/* Mobile Menu, show/hide based on menu state */}
             {isMenuOpen && (
                 <div className="md:hidden" id="mobile-menu">
                     <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                         <a href="/" onClick={(e) => handleNavClick(e, '/')} className={navLinkClasses('/', true)}>Home</a>
-                        <a href="/experience" onClick={(e) => handleNavClick(e, '/experience')} className={navLinkClasses('/experience', true)}>Experience</a>
-                        <a href="/projects" onClick={(e) => handleNavClick(e, '/projects')} className={navLinkClasses('/projects', true)}>Projects</a>
+                        <a href="/experienced" onClick={(e) => handleNavClick(e, '/experienced')} className={navLinkClasses('/experienced', true)}>Experience</a>
+                        <a href="/building" onClick={(e) => handleNavClick(e, '/building')} className={navLinkClasses('/building', true)}>Projects</a>
                     </div>
                 </div>
             )}
@@ -312,8 +423,8 @@ const Header = ({ currentPage, navigate }) => {
 };
 
 const Footer = () => (
-    <footer className="bg-gray-800/50 mt-16 py-6">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-400 text-sm">
+    <footer className="bg-stone-900/50 mt-16 py-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-stone-400 text-sm">
             <p>&copy; {new Date().getFullYear()} {portfolioData.name}. All rights reserved.</p>
         </div>
     </footer>
@@ -322,70 +433,82 @@ const Footer = () => (
 // --- MAIN APP COMPONENT ---
 
 export default function App() {
-    // Helper function to determine the initial page.
-    // This fixes an issue in preview environments where the initial path is not '/',
-    // ensuring the homepage is shown by default instead of a 404 page.
     const getInitialPage = () => {
         const path = window.location.pathname;
-        const validPaths = ['/', '/experience', '/projects'];
-        // If the browser's path is not one of our defined pages, default to home.
+        const validPaths = ['/', '/experienced', '/building'];
         return validPaths.includes(path) ? path : '/';
     };
 
-    // State to track the current page, initialized by our helper function.
     const [currentPage, setCurrentPage] = useState(getInitialPage());
 
-
-    // This effect listens for browser back/forward navigation
     useEffect(() => {
         const handlePopState = () => {
-            setCurrentPage(window.location.pathname);
+            setCurrentPage(getInitialPage());
         };
-        // Add event listener for browser navigation
         window.addEventListener('popstate', handlePopState);
-        
-        // Cleanup listener on component unmount
-        return () => {
-            window.removeEventListener('popstate', handlePopState);
-        };
+        return () => window.removeEventListener('popstate', handlePopState);
     }, []);
 
-    // Function to handle navigation clicks from the Header
-    const navigate = (path) => {
-        try {
-            // This will work on a live server but might fail in sandboxed environments like the preview
-            window.history.pushState({}, '', path);
-        } catch (error) {
-            console.warn("Could not push state to history due to sandbox restrictions:", error);
-            // Fallback for environments where pushState is restricted.
-            // The page will still change, just the URL bar won't update in the preview.
+    useEffect(() => {
+        window.scrollTo(0, 0);
+
+        // Update document title based on the current page for the "living tab" effect
+        switch (currentPage) {
+            case '/':
+                document.title = "jimb.is a Software Engineer";
+                break;
+            case '/experienced':
+                document.title = "jimb.is experienced";
+                break;
+            case '/building':
+                document.title = "jimb.is building";
+                break;
+            default:
+                document.title = "jimb.is";
         }
-        // Update the state to re-render the correct page
+    }, [currentPage]);
+
+    const navigate = (path) => {
+        if (window.location.pathname !== path) {
+            try {
+                window.history.pushState({ path }, '', path);
+            } catch (error) {
+                console.warn("Could not push state to history:", error);
+            }
+        }
         setCurrentPage(path);
     };
 
-    // Simple router to render the correct page component
     const renderPage = () => {
         switch (currentPage) {
             case '/':
                 return <HomePage navigate={navigate} />;
-            case '/experience':
+            case '/experienced':
                 return <ExperiencePage />;
-            case '/projects':
+            case '/building':
                 return <ProjectsPage />;
             default:
-                // Show a 404 page for any other URL
                 return <NotFoundPage />;
         }
     };
 
     return (
-        <div className="bg-gray-900 min-h-screen font-sans text-gray-100 flex flex-col">
+        <div className="min-h-screen font-sans text-gray-100 flex flex-col bg-stone-900 [background-image:radial-gradient(theme(colors.stone.800)_1px,transparent_1px)] [background-size:16px_16px]">
+            {/* Decorative Sidebars for large screens */}
+            <div className="hidden lg:block fixed bottom-0 left-12 w-px h-48 bg-stone-700">
+                <div className="absolute left-1/2 -translate-x-1/2 -top-40 flex flex-col items-center space-y-6">
+                     <a href={portfolioData.socials.github} target="_blank" rel="noopener noreferrer" className="text-stone-400 hover:text-white transition-transform hover:scale-110"><GithubIcon /></a>
+                    <a href={portfolioData.socials.linkedin} target="_blank" rel="noopener noreferrer" className="text-stone-400 hover:text-white transition-transform hover:scale-110"><LinkedinIcon /></a>
+                    <a href={portfolioData.resumeUrl} download title="Download Resume" className="text-stone-400 hover:text-white transition-transform hover:scale-110"><DownloadIcon /></a>
+                </div>
+            </div>
+            <div className="hidden lg:block fixed bottom-0 right-12 w-px h-48 bg-stone-700">
+                 <a href={`mailto:${portfolioData.email}`} className="absolute left-1/2 -translate-x-1/2 -top-24 text-stone-400 hover:text-white [writing-mode:vertical-lr] tracking-widest text-sm transition-colors">
+                    {portfolioData.email}
+                </a>
+            </div>
+
             <Header currentPage={currentPage} navigate={navigate} />
-            {/* This new structure for main ensures content is centered.
-              1. The main tag is a full-width block that grows to fill space.
-              2. The inner div acts as a container, handling centering, max-width, and padding.
-            */}
             <main className="flex-grow w-full py-8">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     {renderPage()}

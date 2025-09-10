@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html, body {
+  background-color: #1c1917; /* This is the color for Tailwind's stone-900 */
+}
