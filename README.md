@@ -1,12 +1,44 @@
-# React + Vite
+# James J. Barry - Portfolio Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to my personal portfolio website! This repository contains the source code for [JimB.is](https://jimb.is) — a showcase of my work, skills, and projects as a software engineer.
 
-Currently, two official plugins are available:
+## About
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This site serves as my professional portfolio, where you can learn more about my background, view selected projects, and find ways to connect with me. It highlights:
 
-## Expanding the ESLint configuration
+- Software engineering projects
+- Technical skills and interests
+- Resume and background information
+- Contact details and links to my online profiles
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Technologies Used
+
+- **GitHub Pages**: Hosting the site
+- **HTML5 / CSS3**: For structure and styling
+- **JavaScript**: For interactivity (if applicable)
+- **Other frameworks/libraries**: *(Add here if you use any, e.g., React, Bootstrap, etc.)*
+
+## Features
+
+- Responsive design for mobile and desktop
+- Project showcase with descriptions and links
+- Downloadable resume/CV
+- Contact form or links to email/social media
+
+
+## Deployment
+
+This site is automatically deployed via [GitHub Pages](https://pages.github.com/). Any changes pushed to the `main` branch will be published to [https://james-j-barry.github.io](https://james-j-barry.github.io).
+
+## Contributing
+
+This repository is primarily for my personal portfolio. If you notice a typo or have a suggestion, please let me know!
+
+## License
+
+[MIT License](LICENSE)
+
+---
+
+Thank you for visiting my portfolio!  
+Feel free to connect or reach out — links are available on the site.
