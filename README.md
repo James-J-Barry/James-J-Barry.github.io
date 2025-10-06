@@ -4,7 +4,7 @@ This repository contains the source code for my personal portfolio website, show
 
 ## Live Site
 
-Visit: [https://jimb.is](https://jimb.is)
+Visit: [jimb.is](https://jimb.is)
 
 ## About
 
