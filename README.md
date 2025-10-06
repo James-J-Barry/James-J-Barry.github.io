@@ -1,38 +1,69 @@
-# James J. Barry - Portfolio Website
+# James J. Barry - Personal Portfolio Website
 
-Welcome to my personal portfolio website! This repository contains the source code for [JimB.is](https://jimb.is) — a showcase of my work, skills, and projects as a software engineer.
+This repository contains the source code for my personal portfolio website, showcasing my work, skills, and projects as a software engineer.
+
+## Live Site
+
+Visit: [https://jimb.is](https://jimb.is)
 
 ## About
 
-This site serves as my professional portfolio, where you can learn more about my background, view selected projects, and find ways to connect with me. It highlights:
+This site serves as my professional portfolio, highlighting:
 
-- Software engineering projects
+- Software engineering projects and personal work
 - Technical skills and interests
-- Resume and background information
-- Contact details and links to my online profiles
+- Resume and background
+- Contact details and social links
 
 ## Technologies Used
 
-- **GitHub Pages**: Hosting the site
-- **HTML5 / CSS3**: For structure and styling
-- **JavaScript**: For interactivity (if applicable)
-- **Other frameworks/libraries**: *(Add here if you use any, e.g., React, Bootstrap, etc.)*
+- **React**: Front-end UI development (`src/App.jsx`, `src/main.jsx`)
+- **Vite**: Modern build and dev server
+- **Tailwind CSS**: Utility-first CSS framework for styling
+- **ESLint**: Linting and code quality
+- **GitHub Pages / gh-pages**: Deployment and hosting
 
-## Features
+## Directory Structure
 
-- Responsive design for mobile and desktop
-- Project showcase with descriptions and links
-- Downloadable resume/CV
-- Contact form or links to email/social media
+- `/public`: Static assets
+- `/src`: Source code
+  - `App.jsx`, `main.jsx`: Main React entry points
+  - `index.css`, `App.css`: Styling with Tailwind CSS
+  - `/assets`: Images and other assets
 
+## Scripts
+
+Common scripts available via `npm`:
+
+- `npm run dev`: Start development server
+- `npm run build`: Build for production
+- `npm run preview`: Preview production build locally
+- `npm run lint`: Lint code with ESLint
+- `npm run deploy`: Deploy to GitHub Pages
+
+## Getting Started
+
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/James-J-Barry/James-J-Barry.github.io.git
+    ```
+2. Install dependencies:
+    ```bash
+    npm install
+    ```
+3. Run locally:
+    ```bash
+    npm run dev
+    ```
+4. Visit `http://localhost:5173` (or as indicated by Vite).
 
 ## Deployment
 
-This site is automatically deployed via [GitHub Pages](https://pages.github.com/). Any changes pushed to the `main` branch will be published to [https://james-j-barry.github.io](https://james-j-barry.github.io).
+The site is deployed automatically to [https://jimb.is](https://jimb.is) via GitHub Pages using the `gh-pages` branch and Vite's output.
 
 ## Contributing
 
-This repository is primarily for my personal portfolio. If you notice a typo or have a suggestion, please let me know!
+This repository is for my personal portfolio. If you spot a typo or have a suggestion, feel free to open an issue or pull request.
 
 ## License
 
@@ -40,5 +71,4 @@ This repository is primarily for my personal portfolio. If you notice a typo or 
 
 ---
 
-Thank you for visiting my portfolio!  
-Feel free to connect or reach out — links are available on the site.
+Thank you for visiting my portfolio!
