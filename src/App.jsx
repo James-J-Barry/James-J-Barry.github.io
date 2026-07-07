@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 // --- PORTFOLIO DATA ---
 const portfolioData = {
     name: "James Barry",
-    title: "Software Engineer & Researcher",
+    title: "Software Engineer & Data Scientist",
     // Animated hero statements to cycle through
     heroStatements: [
         "a software engineer.",
@@ -18,48 +18,108 @@ const portfolioData = {
     // Add the path to your resume PDF (must be in the /public folder)
     resumeUrl: "/JamesBarryResume.pdf",
     location: "College Park, MD",
+    phone: "(410) 231-1200",
     email: "james.j.barry@icloud.com",
     socials: {
         github: "https://github.com/James-J-Barry",
         linkedin: "https://linkedin.com/in/James-J-Barry",
+        portfolio: "https://jimb.is",
     },
-    about: "I'm a Computer Science student at the University of Maryland with a passion for building scalable, efficient software solutions. My experience ranges from developing data science pipelines on high-performance computing clusters to creating user-facing web applications and browser extensions. I am deeply interested in NLP, parallel computing, and quantum machine learning.",
+    about: "I'm a Computer Science student at the University of Maryland focused on software engineering, AI/ML systems, and scalable data workflows. I enjoy building reliable tools that combine strong engineering foundations with practical quantitative and research-driven methods.",
+    technicalSkills: {
+        Languages: ["Python", "Java", "JavaScript", "TypeScript", "C", "R", "MATLAB", "OCaml", "Rust"],
+        "Data & ML": ["pandas", "NumPy", "PyTorch", "scikit-learn", "SQL", "Vector Embeddings", "NLP", "Quantum Machine Learning"],
+        "Frameworks & Tools": ["React", "Node.js", "Git", "CI/CD", "Linux", "Shell (PBS/Slurm)", "HPC", "Apptainer/Singularity"],
+        Concepts: ["Data Structures & Algorithms", "OOP", "Parallel Computing", "Containerization", "Quantitative Methods"]
+    },
+    education: {
+        school: "University of Maryland",
+        location: "College Park, MD",
+        degree: "B.S. Computer Science",
+        minor: "Computational Finance",
+        gpa: "3.97/4.0",
+        graduation: "May 2028",
+        coursework: [
+            "Algorithms",
+            "Advanced Data Structures",
+            "Data Science",
+            "Organization of Programming Languages",
+            "Computer Systems",
+            "Linear Algebra",
+            "Probability & Statistics",
+            "Discrete Mathematics",
+            "Undergraduate Research"
+        ],
+        organizations: [
+            "FIRE: Quantum Machine Learning Stream",
+            "Undergraduate Quantum Association"
+        ],
+        leadership: [
+            "Logistics Director, Bitcamp Hackathon (coordinating venue, hardware, food, and utilities operations for 1000+ attendees)",
+            "Education Chair, Kappa Theta Pi (leading professional development programming and technical skills development for 70+ members)"
+        ]
+    },
     experience: [
         {
-            company: "Parsons Corporation & Army Research Lab DSRC",
+            company: "T. Rowe Price",
+            location: "Owings Mills, MD",
+            role: "Software Engineering Intern — AI Engineering & Application Development",
+            period: "May 2026 - Aug 2026",
+            highlights: [
+                "Diagnosed and resolved a data pipeline failure in an internal AI-powered application insights platform, recovering 5,326 S3 records and 101,726 infrastructure data points by tracing execution across Python subprocesses, the Splunk API, and a SQLite cache layer.",
+                "Built full-stack features integrating a React frontend with a Python backend serving 180+ API endpoints, collaborating through GitLab CI/CD and code review in an agile team."
+            ],
+            skills: ["Python", "React", "Splunk API", "SQLite", "GitLab CI/CD", "API Development"]
+        },
+        {
+            company: "Parsons Corp. @ ARL DoD Supercomputing Research Center",
+            location: "Aberdeen Proving Ground, MD",
             role: "Software Engineer & Data Scientist Intern",
             period: "Jun 2025 - Aug 2025",
-            description: "Built and deployed a scalable evaluation system for semantic similarity algorithms on Army Test Incident Reports. Improved search precision by over 280% using multi-stage LLM summarization pipelines and cut processing time by 8x by parallelizing analysis across an 8-node HPC cluster. Designed and created reproducible, documented Python tooling for long-term research integration.",
-            skills: ["Python", "HPC", "PBS", "NLP", "Prompt Engineering", "GitLab"]
+            highlights: [
+                "Built and deployed a scalable evaluation system for semantic similarity algorithms on 100,000+ Army Test Incident Reports (TIRs), improving evaluator accuracy and operational efficiency.",
+                "Improved similarity search precision by over 280% using multi-stage LLM summarization pipelines with advanced prompt engineering and JSON parsing.",
+                "Cut processing time by 8× by parallelizing TIR LLM analysis across 8-node HPC clusters using PBS batch jobs.",
+                "Designed modular Python tooling with CLI interfaces, logging, and error handling to automate model evaluation and embedding generation; authored technical documentation and user guides for long-term maintainability."
+            ],
+            skills: ["Python", "HPC", "PBS", "NLP", "Prompt Engineering", "JSON", "CLI Tooling"]
         },
         {
             company: "First Year Innovation and Research Experience (FIRE)",
+            location: "College Park, MD",
             role: "Quantum Machine Learning Researcher",
-            period: "Jan 2025 - Present",
-            description: "Developing a strong foundational understanding of quantum computing and machine learning through hands-on research in collaboration with the QLab Quantum research lab. Executing projects centered on quantum software, hardware, and data analysis using state-of-the-art tools.",
-            skills: ["Quantum Machine Learning", "Python", "Data Analysis", "Research"]
-        },
-        {
-            company: "Bitcamp",
-            role: "Logistics and Hardware Organizer",
-            period: "Oct 2024 - May 2025",
-            description: "As part of the organizing team for UMD's premier hackathon, I secured and managed hardware for over 1,400 participants. I also utilized CAD software to design and construct a large collaborative art piece for the event.",
-            skills: ["Project Management", "Logistics", "CAD", "Hardware"]
+            period: "Aug 2024 - Dec 2025",
+            highlights: [
+                "Engineered a Quantum Principal Component Analysis (QPCA) algorithm utilizing Quantum Phase Estimation (QPE) to extract eigenvalues without constructing full covariance matrices.",
+                "Validated algorithm performance achieving 86% reconstruction parity with classical PCA on 16×16 MNIST digit images using Mean Squared Error (MSE).",
+                "Demonstrated complexity reduction from O(N^3) to O(poly(log N)), an exponential theoretical speedup; simulated density matrix exponentiation for IonQ hardware deployment."
+            ],
+            skills: ["Quantum Machine Learning", "Quantum Computing", "Python", "Data Analysis", "Research"]
         }
     ],
     projects: [
         {
-            name: "High-Vis Grades for Gradescope",
-            description: "A Chrome Extension addressing a key limitation in the Gradescope platform for 40,000+ UMD students. It injects a script to automatically calculate and display weighted course grades.",
-            stack: ["JavaScript", "Chrome APIs", "DOM Manipulation", "HTML"],
-            link: "https://github.com/James-J-Barry", // Update with specific repo link if available
+            name: "Volatility Surface & Model-Divergence Engine",
+            description: "Built a quantitative platform for real-time market surface modeling, simulation, and interactive visualization.",
+            stack: ["Python", "NumPy/SciPy", "scikit-learn", "Streamlit", "Monte Carlo"],
+            highlights: [
+                "Engineered a live data pipeline ingesting, cleaning, and validating 1,000+ real-time market data records, filtering stale and illiquid inputs before feeding a numerical modeling engine.",
+                "Built a Monte Carlo simulation engine (geometric Brownian motion, antithetic variance reduction) and a Newton-Raphson/Brent numerical solver to recover latent model parameters from observed price data, validated against closed-form benchmarks.",
+                "Designed and cross-validated two competing statistical models of a live market surface — a constrained parametric fit and a gradient-boosted regression — reducing model-vs-market error by roughly 90% versus a naive baseline.",
+                "Shipped an interactive Streamlit web application exposing the platform output as a live, explorable 3D visualization."
+            ],
+            link: "https://github.com/James-J-Barry",
             live: null
         },
         {
-            name: "RecipEZ - HopHacks Project",
-            description: "An online recipe database created at HopHacks to store recipes and nutrition info for users with dietary restrictions. Features a web app for users to search for and contribute recipes.",
-            stack: ["TypeScript", "React", "Node.js", "MongoDB", "Auth0"],
-            link: "https://github.com/James-J-Barry", // Update with specific repo link if available
+            name: "High-Vis Grades for Gradescope",
+            description: "Chrome Extension that enhances the Gradescope UI by adding weighted course average calculations.",
+            stack: ["JavaScript", "Chrome APIs", "DOM Manipulation", "HTML"],
+            highlights: [
+                "Engineered a Chrome Extension enhancing the Gradescope UI, providing a grade calculation feature for over 40,000 students at UMD.",
+                "Implemented DOM manipulation and event listeners to inject custom HTML and dynamically display weighted course averages."
+            ],
+            link: "https://github.com/James-J-Barry",
             live: null
         }
     ]
@@ -176,6 +236,16 @@ const HomePage = ({ navigate }) => {
                         <Typewriter statements={portfolioData.heroStatements} />
                     </h2>
                     <p className={`max-w-xl text-stone-400 lg:text-lg mb-6 mx-auto md:mx-0 transition-all duration-700 ease-out delay-300 ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>{portfolioData.about}</p>
+                    <p className={`max-w-xl text-stone-300 text-sm lg:text-base mb-3 mx-auto md:mx-0 transition-all duration-700 ease-out delay-[350ms] ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+                        {portfolioData.phone} | {portfolioData.email} | {portfolioData.location}
+                    </p>
+                    <p className={`max-w-xl text-stone-400 text-sm mb-6 mx-auto md:mx-0 transition-all duration-700 ease-out delay-[425ms] ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+                        <a href={portfolioData.socials.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">LinkedIn</a>
+                        {" | "}
+                        <a href={portfolioData.socials.github} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">GitHub</a>
+                        {" | "}
+                        <a href={portfolioData.socials.portfolio} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Portfolio Site</a>
+                    </p>
                     <div className={`flex items-center justify-center md:justify-start space-x-6 transition-all duration-700 ease-out delay-500 ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
                         <a href={portfolioData.socials.github} target="_blank" rel="noopener noreferrer" className="text-stone-400 hover:text-white transition-transform hover:scale-110"><GithubIcon /></a>
                         <a href={portfolioData.socials.linkedin} target="_blank" rel="noopener noreferrer" className="text-stone-400 hover:text-white transition-transform hover:scale-110"><LinkedinIcon /></a>
@@ -191,6 +261,58 @@ const HomePage = ({ navigate }) => {
                     />
                 </div>
             </section>
+
+            {/* --- Technical Skills --- */}
+            <section className="max-w-6xl mx-auto px-4">
+                <h2 className="text-3xl font-bold text-white mb-8 text-center">Technical Skills</h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {Object.entries(portfolioData.technicalSkills).map(([category, values]) => (
+                        <div key={category} className="bg-stone-800 rounded-lg p-6 shadow-lg">
+                            <h3 className="text-lg font-semibold text-emerald-400 mb-4">{category}</h3>
+                            <div className="flex flex-wrap gap-2">
+                                {values.map((value) => (
+                                    <span key={value} className="bg-stone-700 text-stone-300 text-xs font-medium px-2.5 py-1 rounded-full">
+                                        {value}
+                                    </span>
+                                ))}
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </section>
+
+            {/* --- Education --- */}
+            <section className="max-w-4xl mx-auto px-4">
+                <h2 className="text-3xl font-bold text-white mb-8 text-center">Education</h2>
+                <div className="bg-stone-800 rounded-lg p-6 md:p-8 shadow-lg">
+                    <h3 className="text-2xl font-bold text-white">{portfolioData.education.school}</h3>
+                    <p className="text-stone-300 mb-2">{portfolioData.education.location}</p>
+                    <p className="text-stone-300">
+                        {portfolioData.education.degree}, Minor: {portfolioData.education.minor}
+                    </p>
+                    <p className="text-stone-400 mb-6">
+                        GPA: {portfolioData.education.gpa} | Graduation: {portfolioData.education.graduation}
+                    </p>
+                    <div className="space-y-4">
+                        <div>
+                            <h4 className="text-sm uppercase tracking-wide text-emerald-400 font-semibold mb-2">Coursework</h4>
+                            <p className="text-stone-400">{portfolioData.education.coursework.join(", ")}</p>
+                        </div>
+                        <div>
+                            <h4 className="text-sm uppercase tracking-wide text-emerald-400 font-semibold mb-2">Organizations</h4>
+                            <p className="text-stone-400">{portfolioData.education.organizations.join(" • ")}</p>
+                        </div>
+                        <div>
+                            <h4 className="text-sm uppercase tracking-wide text-emerald-400 font-semibold mb-2">Leadership</h4>
+                            <ul className="list-disc list-inside text-stone-400 space-y-2">
+                                {portfolioData.education.leadership.map((item) => (
+                                    <li key={item}>{item}</li>
+                                ))}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
             
             {/* --- Experience Preview --- */}
             <section className="max-w-4xl mx-auto px-4">
@@ -202,7 +324,15 @@ const HomePage = ({ navigate }) => {
                             <p className="text-sm font-semibold text-emerald-400 mb-1">{job.period}</p>
                             <h3 className="text-2xl font-bold text-white">{job.role}</h3>
                             <h4 className="text-lg font-medium text-stone-300 mb-3">{job.company}</h4>
-                            <p className="text-stone-400 mb-4">{job.description}</p>
+                            <p className="text-sm text-stone-500 mb-3">{job.location}</p>
+                            {job.highlights && (
+                                <ul className="list-disc list-inside text-stone-400 mb-4 space-y-1">
+                                    {job.highlights.slice(0, 2).map((highlight) => (
+                                        <li key={highlight}>{highlight}</li>
+                                    ))}
+                                </ul>
+                            )}
+                            {!job.highlights && <p className="text-stone-400 mb-4">{job.description}</p>}
                             <div className="flex flex-wrap gap-2">
                                 {job.skills.map(skill => (
                                     <span key={skill} className="bg-stone-800 text-stone-300 text-xs font-medium px-2.5 py-1 rounded-full">{skill}</span>
@@ -281,7 +411,15 @@ const ExperiencePage = () => {
                             <p className="text-sm font-semibold text-emerald-400 mb-1">{job.period}</p>
                             <h3 className="text-2xl font-bold text-white">{job.role}</h3>
                             <h4 className="text-lg font-medium text-stone-300 mb-3">{job.company}</h4>
-                            <p className="text-stone-400 mb-4">{job.description}</p>
+                            <p className="text-sm text-stone-500 mb-3">{job.location}</p>
+                            {job.highlights && (
+                                <ul className="list-disc list-inside text-stone-400 mb-4 space-y-1">
+                                    {job.highlights.map((highlight) => (
+                                        <li key={highlight}>{highlight}</li>
+                                    ))}
+                                </ul>
+                            )}
+                            {!job.highlights && <p className="text-stone-400 mb-4">{job.description}</p>}
                             <div className="flex flex-wrap gap-2">
                                 {job.skills.map(skill => (
                                     <span key={skill} className="bg-stone-800 text-stone-300 text-xs font-medium px-2.5 py-1 rounded-full">{skill}</span>
@@ -316,6 +454,13 @@ const ProjectsPage = () => {
                     >
                         <h3 className="text-xl font-bold text-white mb-2">{project.name}</h3>
                         <p className="text-stone-400 flex-grow mb-4">{project.description}</p>
+                        {project.highlights && (
+                            <ul className="list-disc list-inside text-stone-400 mb-4 space-y-1 text-sm">
+                                {project.highlights.map((highlight) => (
+                                    <li key={highlight}>{highlight}</li>
+                                ))}
+                            </ul>
+                        )}
                         <div className="flex flex-wrap gap-2 mb-4">
                             {project.stack.map(tech => (
                                 <span key={tech} className="bg-stone-700 text-stone-300 text-xs font-medium px-2.5 py-1 rounded-full">{tech}</span>
@@ -518,4 +663,3 @@ export default function App() {
         </div>
     );
 }
-
