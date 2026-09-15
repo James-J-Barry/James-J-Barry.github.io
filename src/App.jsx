@@ -262,13 +262,6 @@ const HomePage = ({ navigate }) => {
                     <p className={`max-w-xl text-stone-300 text-sm lg:text-base mb-3 mx-auto md:mx-0 transition-all duration-700 ease-out delay-[350ms] ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
                         {portfolioData.phone} | {portfolioData.email} | {portfolioData.location}
                     </p>
-                    <p className={`max-w-xl text-stone-400 text-sm mb-6 mx-auto md:mx-0 transition-all duration-700 ease-out delay-[425ms] ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-                        <a href={portfolioData.socials.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">LinkedIn</a>
-                        {" | "}
-                        <a href={portfolioData.socials.github} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">GitHub</a>
-                        {" | "}
-                        <a href={portfolioData.socials.portfolio} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Portfolio Site</a>
-                    </p>
                     <div className={`flex items-center justify-center md:justify-start space-x-6 transition-all duration-700 ease-out delay-500 ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
                         <a href={portfolioData.socials.github} target="_blank" rel="noopener noreferrer" className="text-stone-400 hover:text-white transition-transform hover:scale-110"><GithubIcon /></a>
                         <a href={portfolioData.socials.linkedin} target="_blank" rel="noopener noreferrer" className="text-stone-400 hover:text-white transition-transform hover:scale-110"><LinkedinIcon /></a>
