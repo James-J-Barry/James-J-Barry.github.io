@@ -200,7 +200,7 @@ const Typewriter = ({ statements }) => {
 
     return (
         <span className="inline-flex items-center">
-            I'm&nbsp;
+            is&nbsp;
             <span className="text-sky-400">
                 {`${statements[index].substring(0, subIndex)}`}
             </span>
@@ -534,9 +534,9 @@ const Header = ({ currentPage, navigate }) => {
                     </div>
                     <div className="hidden md:block">
                         <div className="ml-10 flex items-baseline space-x-4">
-                            <a href="/" onClick={(e) => handleNavClick(e, '/')} className={navLinkClasses('/')}><span className="text-stone-500 mr-1">...</span>me</a>
-                            <a href="/experienced" onClick={(e) => handleNavClick(e, '/experienced')} className={navLinkClasses('/experienced')}><span className="text-stone-500 mr-1">...</span>experienced</a>
-                            <a href="/building" onClick={(e) => handleNavClick(e, '/building')} className={navLinkClasses('/building')}><span className="text-stone-500 mr-1">...</span>building</a>
+                            <a href="/" onClick={(e) => handleNavClick(e, '/')} className={navLinkClasses('/')}>Home</a>
+                            <a href="/experienced" onClick={(e) => handleNavClick(e, '/experienced')} className={navLinkClasses('/experienced')}>Experience</a>
+                            <a href="/building" onClick={(e) => handleNavClick(e, '/building')} className={navLinkClasses('/building')}>Projects</a>
                         </div>
                     </div>
                     <div className="-mr-2 flex md:hidden">
