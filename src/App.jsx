@@ -27,10 +27,9 @@ const portfolioData = {
     },
     about: "I'm a Computer Science student at the University of Maryland focused on software engineering, AI/ML systems, and scalable data workflows. I enjoy building reliable tools that combine strong engineering foundations with practical quantitative and research-driven methods.",
     technicalSkills: {
-        Languages: ["Python", "Java", "JavaScript", "TypeScript", "C", "R", "MATLAB", "OCaml", "Rust"],
-        "Data & ML": ["pandas", "NumPy", "PyTorch", "scikit-learn", "SQL", "Vector Embeddings", "NLP", "Quantum Machine Learning"],
-        "Frameworks & Tools": ["React", "Node.js", "Git", "CI/CD", "Linux", "Shell (PBS/Slurm)", "HPC", "Apptainer/Singularity"],
-        Concepts: ["Data Structures & Algorithms", "OOP", "Parallel Computing", "Containerization", "Quantitative Methods"]
+        "AI & Machine Learning": ["PyTorch", "scikit-learn", "LLM Prompt Engineering", "Vector Embeddings", "NLP", "Quantum Machine Learning"],
+        Languages: ["Python", "Java", "JavaScript", "TypeScript", "C", "R", "MATLAB", "Rust"],
+        "Frameworks & Tools": ["React", "Next.js", "Node.js", "AWS", "Docker", "PostgreSQL", "Git", "CI/CD", "Linux", "HPC (PBS/Slurm)"]
     },
     education: {
         school: "University of Maryland",
@@ -40,15 +39,17 @@ const portfolioData = {
         gpa: "3.97/4.0",
         graduation: "May 2028",
         coursework: [
+            "Machine Learning",
             "Algorithms",
             "Advanced Data Structures",
-            "Data Science",
             "Organization of Programming Languages",
             "Computer Systems",
             "Linear Algebra",
-            "Probability & Statistics",
-            "Discrete Mathematics",
-            "Undergraduate Research"
+            "Applied Probability & Statistics",
+            "Discrete Structures",
+            "Data Science",
+            "Business Value Chain",
+            "Financial Markets & Financial Datasets"
         ],
         organizations: [
             "FIRE: Quantum Machine Learning Stream",
@@ -66,10 +67,12 @@ const portfolioData = {
             role: "Software Engineering Intern — AI Engineering & Application Development",
             period: "May 2026 - Aug 2026",
             highlights: [
-                "Diagnosed and resolved a data pipeline failure in an internal AI-powered application insights platform, recovering 5,326 S3 records and 101,726 infrastructure data points by tracing execution across Python subprocesses, the Splunk API, and a SQLite cache layer.",
-                "Built full-stack features integrating a React frontend with a Python backend serving 180+ API endpoints, collaborating through GitLab CI/CD and code review in an agile team."
+                "Engineered a data-enrichment pipeline for an AI-powered AWS cost-optimization tool, surfacing $139,634/year in savings across 517 EC2 instances by integrating pricing lookups and automated recommendation logic in a React/TypeScript frontend.",
+                "Diagnosed a critical infrastructure failure by tracing a 58MB error response to a Splunk proxy misconfiguration, restoring access to 104,205 AWS resources across 200 accounts by migrating 5 Python API modules.",
+                "Optimized data-pipeline query architecture, increasing EC2 coverage from 515 to 4,154 instances and uncovering an additional $111,622/year in savings by resolving Splunk API result-cap limitations and data dilution in mixed-resource queries.",
+                "Raised AI-generated report data quality from 76% to 96% field coverage via a systematic audit of 79 fields across 15 panels."
             ],
-            skills: ["Python", "React", "Splunk API", "SQLite", "GitLab CI/CD", "API Development"]
+            skills: ["Python", "AWS", "React", "TypeScript", "Splunk API", "Data Pipelines"]
         },
         {
             company: "Parsons Corp. @ ARL DoD Supercomputing Research Center",
@@ -98,6 +101,18 @@ const portfolioData = {
         }
     ],
     projects: [
+        {
+            name: "BarryBudget — Personal Finance Web & Mobile App",
+            description: "A solo-built full-stack fintech platform for bank aggregation, budgeting, and net-worth tracking.",
+            stack: ["Next.js", "React", "TypeScript", "PostgreSQL/Prisma", "Plaid", "Stripe"],
+            highlights: [
+                "Built a full-stack fintech platform spanning a Next.js web app, Prisma/PostgreSQL data layer, and React Native/Expo mobile app for bank aggregation, budgeting, and net-worth tracking.",
+                "Integrated Plaid for live bank data with cursor-based transaction sync and AES-256-GCM token encryption; shipped usage-based Stripe billing with webhook-synced entitlements.",
+                "Directed an AI-agentic development workflow (Claude Code) with a living technical spec and a GitHub Actions CI pipeline (Vitest, Playwright) gating every change."
+            ],
+            link: "https://github.com/James-J-Barry",
+            live: "https://barrybudget.com"
+        },
         {
             name: "Volatility Surface & Model-Divergence Engine",
             description: "Built a quantitative platform for real-time market surface modeling, simulation, and interactive visualization.",
@@ -262,58 +277,6 @@ const HomePage = ({ navigate }) => {
                 </div>
             </section>
 
-            {/* --- Technical Skills --- */}
-            <section className="max-w-6xl mx-auto px-4">
-                <h2 className="text-3xl font-bold text-white mb-8 text-center">Technical Skills</h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {Object.entries(portfolioData.technicalSkills).map(([category, values]) => (
-                        <div key={category} className="bg-stone-800 rounded-lg p-6 shadow-lg">
-                            <h3 className="text-lg font-semibold text-emerald-400 mb-4">{category}</h3>
-                            <div className="flex flex-wrap gap-2">
-                                {values.map((value) => (
-                                    <span key={value} className="bg-stone-700 text-stone-300 text-xs font-medium px-2.5 py-1 rounded-full">
-                                        {value}
-                                    </span>
-                                ))}
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </section>
-
-            {/* --- Education --- */}
-            <section className="max-w-4xl mx-auto px-4">
-                <h2 className="text-3xl font-bold text-white mb-8 text-center">Education</h2>
-                <div className="bg-stone-800 rounded-lg p-6 md:p-8 shadow-lg">
-                    <h3 className="text-2xl font-bold text-white">{portfolioData.education.school}</h3>
-                    <p className="text-stone-300 mb-2">{portfolioData.education.location}</p>
-                    <p className="text-stone-300">
-                        {portfolioData.education.degree}, Minor: {portfolioData.education.minor}
-                    </p>
-                    <p className="text-stone-400 mb-6">
-                        GPA: {portfolioData.education.gpa} | Graduation: {portfolioData.education.graduation}
-                    </p>
-                    <div className="space-y-4">
-                        <div>
-                            <h4 className="text-sm uppercase tracking-wide text-emerald-400 font-semibold mb-2">Coursework</h4>
-                            <p className="text-stone-400">{portfolioData.education.coursework.join(", ")}</p>
-                        </div>
-                        <div>
-                            <h4 className="text-sm uppercase tracking-wide text-emerald-400 font-semibold mb-2">Organizations</h4>
-                            <p className="text-stone-400">{portfolioData.education.organizations.join(" • ")}</p>
-                        </div>
-                        <div>
-                            <h4 className="text-sm uppercase tracking-wide text-emerald-400 font-semibold mb-2">Leadership</h4>
-                            <ul className="list-disc list-inside text-stone-400 space-y-2">
-                                {portfolioData.education.leadership.map((item) => (
-                                    <li key={item}>{item}</li>
-                                ))}
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
             {/* --- Experience Preview --- */}
             <section className="max-w-4xl mx-auto px-4">
                 <h2 className="text-3xl font-bold text-white mb-8 text-center">Recent Experience</h2>
@@ -380,6 +343,58 @@ const HomePage = ({ navigate }) => {
                     <a href="/building" onClick={(e) => handleNavClick(e, '/building')} className="inline-block bg-stone-700 text-white font-bold py-3 px-6 rounded-lg hover:bg-stone-600 transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
                         View All Projects
                     </a>
+                </div>
+            </section>
+
+            {/* --- Technical Skills --- */}
+            <section className="max-w-6xl mx-auto px-4">
+                <h2 className="text-3xl font-bold text-white mb-8 text-center">Technical Skills</h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {Object.entries(portfolioData.technicalSkills).map(([category, values]) => (
+                        <div key={category} className="bg-stone-800 rounded-lg p-6 shadow-lg">
+                            <h3 className="text-lg font-semibold text-emerald-400 mb-4">{category}</h3>
+                            <div className="flex flex-wrap gap-2">
+                                {values.map((value) => (
+                                    <span key={value} className="bg-stone-700 text-stone-300 text-xs font-medium px-2.5 py-1 rounded-full">
+                                        {value}
+                                    </span>
+                                ))}
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </section>
+
+            {/* --- Education --- */}
+            <section className="max-w-4xl mx-auto px-4">
+                <h2 className="text-3xl font-bold text-white mb-8 text-center">Education</h2>
+                <div className="bg-stone-800 rounded-lg p-6 md:p-8 shadow-lg">
+                    <h3 className="text-2xl font-bold text-white">{portfolioData.education.school}</h3>
+                    <p className="text-stone-300 mb-2">{portfolioData.education.location}</p>
+                    <p className="text-stone-300">
+                        {portfolioData.education.degree}, Minor: {portfolioData.education.minor}
+                    </p>
+                    <p className="text-stone-400 mb-6">
+                        GPA: {portfolioData.education.gpa} | Graduation: {portfolioData.education.graduation}
+                    </p>
+                    <div className="space-y-4">
+                        <div>
+                            <h4 className="text-sm uppercase tracking-wide text-emerald-400 font-semibold mb-2">Coursework</h4>
+                            <p className="text-stone-400">{portfolioData.education.coursework.join(", ")}</p>
+                        </div>
+                        <div>
+                            <h4 className="text-sm uppercase tracking-wide text-emerald-400 font-semibold mb-2">Organizations</h4>
+                            <p className="text-stone-400">{portfolioData.education.organizations.join(" • ")}</p>
+                        </div>
+                        <div>
+                            <h4 className="text-sm uppercase tracking-wide text-emerald-400 font-semibold mb-2">Leadership</h4>
+                            <ul className="list-disc list-inside text-stone-400 space-y-2">
+                                {portfolioData.education.leadership.map((item) => (
+                                    <li key={item}>{item}</li>
+                                ))}
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </section>
         </div>
