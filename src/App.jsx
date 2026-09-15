@@ -25,7 +25,7 @@ const portfolioData = {
         linkedin: "https://linkedin.com/in/James-J-Barry",
         portfolio: "https://jbarry.tech",
     },
-    about: "I'm a Computer Science student at the University of Maryland, minoring in Computational Finance, focused on software engineering, AI/ML systems, and scalable data workflows. I'm especially drawn to financial software engineering — building reliable systems at the intersection of markets, data, and code — and enjoy combining strong engineering foundations with practical quantitative and research-driven methods.",
+    about: "I'm a Computer Science student at the University of Maryland, minoring in Computational Finance, focused on software engineering, AI/ML systems, and scalable data workflows. I'm especially drawn to financial software engineering, building systems built on markets and financial data. My expected graduation is May 2028, and I'm actively seeking software engineering and quantitative finance internship opportunities for Summer 2027.",
     technicalSkills: {
         "AI & Machine Learning": ["PyTorch", "scikit-learn", "LLM Prompt Engineering", "Vector Embeddings", "NLP", "Quantum Machine Learning"],
         Languages: ["Python", "Java", "JavaScript", "TypeScript", "C", "R", "MATLAB", "Rust"],
@@ -258,7 +258,7 @@ const HomePage = ({ navigate }) => {
                     <h2 className={`text-xl md:text-2xl xl:text-3xl font-light text-stone-300 mb-4 h-8 transition-all duration-700 ease-out delay-150 ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
                         <Typewriter statements={portfolioData.heroStatements} />
                     </h2>
-                    <p className={`max-w-xl text-stone-400 lg:text-lg mb-6 mx-auto md:mx-0 transition-all duration-700 ease-out delay-300 ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>{portfolioData.about}</p>
+                    <p className={`max-w-xl text-stone-400 lg:text-lg mb-0 mx-auto md:mx-0 transition-all duration-700 ease-out delay-300 ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>{portfolioData.about}</p>
                     <p className={`max-w-xl text-stone-300 text-sm lg:text-base mb-3 mx-auto md:mx-0 transition-all duration-700 ease-out delay-[350ms] ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
                         {portfolioData.phone} | {portfolioData.email} | {portfolioData.location}
                     </p>
