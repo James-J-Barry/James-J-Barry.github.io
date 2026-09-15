@@ -4,7 +4,7 @@ This repository contains the source code for my personal portfolio website, show
 
 ## Live Site
 
-Visit: [jimb.is](https://jimb.is)
+Visit: [jbarry.tech](https://jbarry.tech)
 
 ## About
 
@@ -59,7 +59,7 @@ Common scripts available via `npm`:
 
 ## Deployment
 
-The site is deployed automatically to [https://jimb.is](https://jimb.is) via GitHub Pages using the `gh-pages` branch and Vite's output.
+The site is deployed automatically to [https://jbarry.tech](https://jbarry.tech) via GitHub Pages using the `gh-pages` branch and Vite's output.
 
 ## Contributing
 

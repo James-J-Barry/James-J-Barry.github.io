@@ -1,8 +1,8 @@
 {
-  "name": "jimb-is-portfolio",
+  "name": "jbarry-tech-portfolio",
   "private": true,
   "version": "0.0.0",
-  "homepage": "[https://jimb.is](https://jimb.is)",
+  "homepage": "https://jbarry.tech",
   "type": "module",
   "scripts": {
     "dev": "vite",

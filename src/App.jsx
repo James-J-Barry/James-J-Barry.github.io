@@ -23,7 +23,7 @@ const portfolioData = {
     socials: {
         github: "https://github.com/James-J-Barry",
         linkedin: "https://linkedin.com/in/James-J-Barry",
-        portfolio: "https://jimb.is",
+        portfolio: "https://jbarry.tech",
     },
     about: "I'm a Computer Science student at the University of Maryland focused on software engineering, AI/ML systems, and scalable data workflows. I enjoy building reliable tools that combine strong engineering foundations with practical quantitative and research-driven methods.",
     technicalSkills: {
@@ -200,7 +200,7 @@ const Typewriter = ({ statements }) => {
 
     return (
         <span className="inline-flex items-center">
-            jimb<span className="text-emerald-400">.is</span>&nbsp;
+            I'm&nbsp;
             <span className="text-sky-400">
                 {`${statements[index].substring(0, subIndex)}`}
             </span>
@@ -397,7 +397,7 @@ const ExperiencePage = () => {
     return (
         <div className="max-w-4xl mx-auto p-4 md:p-8">
             <h1 className={`text-4xl xl:text-5xl font-bold text-white mb-12 text-center transition-all duration-700 ease-out ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-                jimb<span className="text-emerald-400">.is</span> <span className="text-sky-400">experienced.</span>
+                Experience
             </h1>
             <div className="space-y-12">
                 {portfolioData.experience.map((job, index) => (
@@ -443,7 +443,7 @@ const ProjectsPage = () => {
     return (
         <div className="max-w-6xl mx-auto p-4 md:p-8">
             <h1 className={`text-4xl xl:text-5xl font-bold text-white mb-12 text-center transition-all duration-700 ease-out ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-                jimb<span className="text-emerald-400">.is</span> <span className="text-sky-400">building...</span>
+                Projects
             </h1>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {portfolioData.projects.map((project, index) => (
@@ -529,7 +529,7 @@ const Header = ({ currentPage, navigate }) => {
                 <div className="flex items-center justify-between h-16">
                     <div className="flex items-center">
                         <a href="/" onClick={(e) => handleNavClick(e, '/')} className="text-white font-bold text-xl tracking-tight">
-                           jimb<span className="text-emerald-400">.is</span>
+                           jbarry<span className="text-emerald-400">.tech</span>
                         </a>
                     </div>
                     <div className="hidden md:block">
@@ -600,16 +600,16 @@ export default function App() {
         // Update document title based on the current page for the "living tab" effect
         switch (currentPage) {
             case '/':
-                document.title = "jimb.is a Software Engineer";
+                document.title = "James Barry | Software Engineer";
                 break;
             case '/experienced':
-                document.title = "jimb.is experienced";
+                document.title = "James Barry | Experience";
                 break;
             case '/building':
-                document.title = "jimb.is building";
+                document.title = "James Barry | Projects";
                 break;
             default:
-                document.title = "jimb.is";
+                document.title = "James Barry";
         }
     }, [currentPage]);
 
