@@ -110,8 +110,9 @@ const portfolioData = {
                 "Integrated Plaid for live bank data with cursor-based transaction sync and AES-256-GCM token encryption; shipped usage-based Stripe billing with webhook-synced entitlements.",
                 "Directed an AI-agentic development workflow (Claude Code) with a living technical spec and a GitHub Actions CI pipeline (Vitest, Playwright) gating every change."
             ],
-            link: "https://github.com/James-J-Barry",
-            live: "https://barrybudget.com"
+            link: null,
+            live: "https://barrybudget.com",
+            liveLabel: "Live Site"
         },
         {
             name: "Volatility Surface & Model-Divergence Engine",
@@ -134,6 +135,13 @@ const portfolioData = {
                 "Engineered a Chrome Extension enhancing the Gradescope UI, providing a grade calculation feature for over 40,000 students at UMD.",
                 "Implemented DOM manipulation and event listeners to inject custom HTML and dynamically display weighted course averages."
             ],
+            link: "https://github.com/James-J-Barry",
+            live: null
+        },
+        {
+            name: "RecipEZ - HopHacks Project",
+            description: "An online recipe database created at HopHacks to store recipes and nutrition info for users with dietary restrictions. Features a web app for users to search for and contribute recipes.",
+            stack: ["TypeScript", "React", "Node.js", "MongoDB", "Auth0"],
             link: "https://github.com/James-J-Barry",
             live: null
         }
@@ -325,14 +333,16 @@ const HomePage = ({ navigate }) => {
                                 ))}
                             </div>
                             <div className="mt-auto pt-4 border-t border-stone-700 flex items-center space-x-4 text-sm">
-                                <a href={project.link} target="_blank" rel="noopener noreferrer" className="flex items-center text-emerald-400 hover:text-emerald-300 transition-colors">
-                                    <GithubIcon />
-                                    <span className="ml-2">Source Code</span>
-                                </a>
+                                {project.link && (
+                                    <a href={project.link} target="_blank" rel="noopener noreferrer" className="flex items-center text-emerald-400 hover:text-emerald-300 transition-colors">
+                                        <GithubIcon />
+                                        <span className="ml-2">Source Code</span>
+                                    </a>
+                                )}
                                 {project.live && (
                                     <a href={project.live} target="_blank" rel="noopener noreferrer" className="flex items-center text-emerald-400 hover:text-emerald-300 transition-colors">
                                         <LinkIcon />
-                                        <span className="ml-1">Live Demo</span>
+                                        <span className="ml-1">{project.liveLabel || "Live Demo"}</span>
                                     </a>
                                 )}
                             </div>
@@ -482,14 +492,16 @@ const ProjectsPage = () => {
                             ))}
                         </div>
                         <div className="mt-auto pt-4 border-t border-stone-700 flex items-center space-x-4 text-sm">
-                            <a href={project.link} target="_blank" rel="noopener noreferrer" className="flex items-center text-emerald-400 hover:text-emerald-300 transition-colors">
-                                <GithubIcon />
-                                <span className="ml-2">Source Code</span>
-                            </a>
+                            {project.link && (
+                                <a href={project.link} target="_blank" rel="noopener noreferrer" className="flex items-center text-emerald-400 hover:text-emerald-300 transition-colors">
+                                    <GithubIcon />
+                                    <span className="ml-2">Source Code</span>
+                                </a>
+                            )}
                             {project.live && (
                                 <a href={project.live} target="_blank" rel="noopener noreferrer" className="flex items-center text-emerald-400 hover:text-emerald-300 transition-colors">
                                     <LinkIcon />
-                                    <span className="ml-1">Live Demo</span>
+                                    <span className="ml-1">{project.liveLabel || "Live Demo"}</span>
                                 </a>
                             )}
                         </div>
