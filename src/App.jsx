@@ -478,9 +478,9 @@ const ProjectsPage = () => {
                         style={{ transitionDelay: `${index * 150}ms` }}
                     >
                         <h3 className="text-xl font-bold text-white mb-2">{project.name}</h3>
-                        <p className="text-stone-400 flex-grow mb-4">{project.description}</p>
+                        <p className="text-stone-400 mb-4">{project.description}</p>
                         {project.highlights && (
-                            <ul className="list-disc list-inside text-stone-400 mb-4 space-y-1 text-sm">
+                            <ul className="list-disc list-inside text-stone-400 mb-4 space-y-1 text-sm flex-grow overflow-y-auto max-h-40 pr-1">
                                 {project.highlights.map((highlight) => (
                                     <li key={highlight}>{highlight}</li>
                                 ))}
