@@ -5,3 +5,21 @@
 html, body {
   background-color: #1c1917; /* This is the color for Tailwind's stone-900 */
 }
+
+.scroll-thin {
+  scrollbar-width: thin;
+  scrollbar-color: #57534e #292524; /* stone-600 thumb on stone-800 track */
+}
+
+.scroll-thin::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scroll-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scroll-thin::-webkit-scrollbar-thumb {
+  background-color: #57534e; /* stone-600 */
+  border-radius: 9999px;
+}
