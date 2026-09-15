@@ -25,7 +25,7 @@ const portfolioData = {
         linkedin: "https://linkedin.com/in/James-J-Barry",
         portfolio: "https://jbarry.tech",
     },
-    about: "I'm a Computer Science student at the University of Maryland focused on software engineering, AI/ML systems, and scalable data workflows. I enjoy building reliable tools that combine strong engineering foundations with practical quantitative and research-driven methods.",
+    about: "I'm a Computer Science student at the University of Maryland, minoring in Computational Finance, focused on software engineering, AI/ML systems, and scalable data workflows. I'm especially drawn to financial software engineering — building reliable systems at the intersection of markets, data, and code — and enjoy combining strong engineering foundations with practical quantitative and research-driven methods.",
     technicalSkills: {
         "AI & Machine Learning": ["PyTorch", "scikit-learn", "LLM Prompt Engineering", "Vector Embeddings", "NLP", "Quantum Machine Learning"],
         Languages: ["Python", "Java", "JavaScript", "TypeScript", "C", "R", "MATLAB", "Rust"],
