@@ -7,18 +7,18 @@ const portfolioData = {
     // Animated hero statements to cycle through
     heroStatements: [
         "a software engineer.",
-        "a problem solver.",
-        "a researcher.",
-        "a creator.",
-        "a scientist.",
-        "ready to build."
+        "building AI for finance.",
+        "engineering data pipelines.",
+        "shipping fintech end to end.",
+        "building tools for AI agents.",
+        "turning market data into models.",
+        "seeking 2027 internships."
     ],
     // Add the URL to your professional headshot here
     imageUrl: "/profpic.jpeg",
     // Add the path to your resume PDF (must be in the /public folder)
     resumeUrl: "/JamesBarryResume.pdf",
     location: "College Park, MD",
-    phone: "(410) 231-1200",
     email: "james.j.barry@icloud.com",
     socials: {
         github: "https://github.com/James-J-Barry",
@@ -27,9 +27,9 @@ const portfolioData = {
     },
     about: "I'm a Computer Science student at the University of Maryland, minoring in Computational Finance, focused on software engineering, AI/ML systems, and scalable data workflows. I'm especially drawn to financial software engineering, building systems built on markets and financial data. My expected graduation is May 2028, and I'm actively seeking software engineering and quantitative finance internship opportunities for Summer 2027.",
     technicalSkills: {
-        "AI & Machine Learning": ["PyTorch", "scikit-learn", "LLM Prompt Engineering", "Vector Embeddings", "NLP", "Quantum Machine Learning"],
-        Languages: ["Python", "Java", "JavaScript", "TypeScript", "C", "R", "MATLAB", "Rust"],
-        "Frameworks & Tools": ["React", "Next.js", "Node.js", "AWS", "Docker", "PostgreSQL", "Git", "CI/CD", "Linux", "HPC (PBS/Slurm)"]
+        Languages: ["Python", "TypeScript", "JavaScript", "Java", "C", "Rust", "R", "MATLAB"],
+        "AI & Machine Learning": ["LLM Prompt Engineering", "LLM Evaluation", "MCP", "Vector Embeddings", "NLP", "PyTorch", "scikit-learn"],
+        "Frameworks & Tools": ["React", "Next.js", "PostgreSQL", "AWS", "Docker", "Splunk", "Git", "GitHub Actions (CI/CD)", "Linux", "HPC (PBS/Slurm)"]
     },
     education: {
         school: "University of Maryland",
@@ -56,8 +56,8 @@ const portfolioData = {
             "Undergraduate Quantum Association"
         ],
         leadership: [
-            "Logistics Director, Bitcamp Hackathon (coordinating venue, hardware, food, and utilities operations for 1000+ attendees)",
-            "Education Chair, Kappa Theta Pi (leading professional development programming and technical skills development for 70+ members)"
+            "Logistics Director, Bitcamp Hackathon (led ~20 organizers coordinating venue, hardware, and utilities for 1,400+ attendees)",
+            "Education Chair, Kappa Theta Pi (ran professional development programming and corporate networking events for 70+ members)"
         ]
     },
     experience: [
@@ -67,10 +67,10 @@ const portfolioData = {
             role: "Software Engineering Intern — AI Engineering & Application Development",
             period: "May 2026 - Aug 2026",
             highlights: [
-                "Engineered a data-enrichment pipeline for an AI-powered AWS cost-optimization tool, surfacing $139,634/year in savings across 517 EC2 instances by integrating pricing lookups and automated recommendation logic in a React/TypeScript frontend.",
-                "Diagnosed a critical infrastructure failure by tracing a 58MB error response to a Splunk proxy misconfiguration, restoring access to 104,205 AWS resources across 200 accounts by migrating 5 Python API modules.",
-                "Optimized data-pipeline query architecture, increasing EC2 coverage from 515 to 4,154 instances and uncovering an additional $111,622/year in savings by resolving Splunk API result-cap limitations and data dilution in mixed-resource queries.",
-                "Raised AI-generated report data quality from 76% to 96% field coverage via a systematic audit of 79 fields across 15 panels."
+                "Engineered a data-enrichment pipeline for an AI-powered AWS cost-optimization tool, surfacing $252,634/year in savings across 517 EC2 instances via pricing lookups and automated recommendation logic in a React/TypeScript frontend.",
+                "Optimized data-pipeline query architecture, expanding EC2 coverage from 515 to 4,154 instances and uncovering an additional $111,622/year in savings by resolving Splunk API result caps and data dilution in mixed-resource queries.",
+                "Raised AI-generated report data quality from 76% to 96% field coverage via a systematic audit of 79 fields across 15 panels.",
+                "Diagnosed a critical failure by tracing a 58MB error response to a Splunk proxy misconfiguration, restoring access to 104,205 AWS resources across 200 accounts by migrating 5 Python API modules."
             ],
             skills: ["Python", "AWS", "React", "TypeScript", "Splunk API", "Data Pipelines"]
         },
@@ -80,9 +80,9 @@ const portfolioData = {
             role: "Software Engineer & Data Scientist Intern",
             period: "Jun 2025 - Aug 2025",
             highlights: [
-                "Built and deployed a scalable evaluation system for semantic similarity algorithms on 100,000+ Army Test Incident Reports (TIRs), improving evaluator accuracy and operational efficiency.",
-                "Improved similarity search precision by over 280% using multi-stage LLM summarization pipelines with advanced prompt engineering and JSON parsing.",
-                "Cut processing time by 8× by parallelizing TIR LLM analysis across 8-node HPC clusters using PBS batch jobs.",
+                "Built and deployed a scalable evaluation system for semantic similarity algorithms over 100,000+ Army Test Incident Reports, improving evaluator accuracy and efficiency.",
+                "Improved similarity search precision by 280%+ via multi-stage LLM summarization pipelines and prompt engineering.",
+                "Cut processing time by 8× by parallelizing LLM analysis across 8-node HPC clusters using PBS batch jobs.",
                 "Designed modular Python tooling with CLI interfaces, logging, and error handling to automate model evaluation and embedding generation; authored technical documentation and user guides for long-term maintainability."
             ],
             skills: ["Python", "HPC", "PBS", "NLP", "Prompt Engineering", "JSON", "CLI Tooling"]
@@ -104,11 +104,11 @@ const portfolioData = {
         {
             name: "BarryBudget — Personal Finance Web & Mobile App",
             description: "A solo-built full-stack fintech platform for bank aggregation, budgeting, and net-worth tracking.",
-            stack: ["Next.js", "React", "TypeScript", "PostgreSQL/Prisma", "Plaid", "Stripe"],
+            stack: ["Next.js", "React", "TypeScript", "React Native/Expo", "PostgreSQL/Prisma", "Plaid", "Stripe", "MCP"],
             highlights: [
-                "Built a full-stack fintech platform spanning a Next.js web app, Prisma/PostgreSQL data layer, and React Native/Expo mobile app for bank aggregation, budgeting, and net-worth tracking.",
-                "Integrated Plaid for live bank data with cursor-based transaction sync and AES-256-GCM token encryption; shipped usage-based Stripe billing with webhook-synced entitlements.",
-                "Directed an AI-agentic development workflow (Claude Code) with a living technical spec and a GitHub Actions CI pipeline (Vitest, Playwright) gating every change."
+                "Shipped a read-only MCP server (\"Agent Access\") letting Claude Desktop, Claude Code, and other agents query a user's budgets, transactions, and net worth via user-minted API tokens; it can never move money or edit budgets.",
+                "Built the full stack solo (web, iOS/Android, backend): Plaid webhook-driven, cursor-based transaction sync with AES-256-GCM token encryption, passkey/TOTP two-factor auth, and usage-based Stripe billing with webhook-synced entitlements.",
+                "Directed agentic development (Claude Code) via a living spec, with CI (Vitest, Playwright) gating every change."
             ],
             link: null,
             live: "https://barrybudget.com",
@@ -124,8 +124,8 @@ const portfolioData = {
                 "Designed and cross-validated two competing statistical models of a live market surface — a constrained parametric fit and a gradient-boosted regression — reducing model-vs-market error by roughly 90% versus a naive baseline.",
                 "Shipped an interactive Streamlit web application exposing the platform output as a live, explorable 3D visualization."
             ],
-            link: "https://github.com/James-J-Barry",
-            live: null
+            link: "https://github.com/James-J-Barry/OptionsPricingCalculator",
+            live: "https://jbvolatilitysurface.streamlit.app/"
         },
         {
             name: "High-Vis Grades for Gradescope",
@@ -135,14 +135,19 @@ const portfolioData = {
                 "Engineered a Chrome Extension enhancing the Gradescope UI, providing a grade calculation feature for over 40,000 students at UMD.",
                 "Implemented DOM manipulation and event listeners to inject custom HTML and dynamically display weighted course averages."
             ],
-            link: "https://github.com/James-J-Barry",
+            link: "https://github.com/James-J-Barry/High-Vis-Grades",
             live: null
         },
         {
             name: "RecipEZ - HopHacks Project",
             description: "An online recipe database created at HopHacks to store recipes and nutrition info for users with dietary restrictions. Features a web app for users to search for and contribute recipes.",
             stack: ["TypeScript", "React", "Node.js", "MongoDB", "Auth0"],
-            link: "https://github.com/James-J-Barry",
+            highlights: [
+                "Built a full-stack recipe database: a React/TypeScript client (Chakra UI, React Router) backed by a Node/Express REST API and MongoDB with create, read, update, and delete support for recipes.",
+                "Integrated Auth0 login and user profiles so users can sign in and contribute their own recipes.",
+                "Prototyped a Keras/TensorFlow.js food-image classification model for image-based recipe input (not enabled in the shipped version)."
+            ],
+            link: "https://github.com/James-J-Barry/HopHacks24",
             live: null
         }
     ]
@@ -260,7 +265,7 @@ const HomePage = ({ navigate }) => {
                     </h2>
                     <p className={`max-w-xl text-stone-400 lg:text-lg mb-0 mx-auto md:mx-0 transition-all duration-700 ease-out delay-300 ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>{portfolioData.about}</p>
                     <p className={`max-w-xl text-stone-300 text-sm lg:text-base mb-3 mx-auto md:mx-0 transition-all duration-700 ease-out delay-[350ms] ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-                        {portfolioData.phone} | {portfolioData.email} | {portfolioData.location}
+                        {portfolioData.email} | {portfolioData.location}
                     </p>
                     <div className={`flex items-center justify-center md:justify-start space-x-6 transition-all duration-700 ease-out delay-500 ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
                         <a href={portfolioData.socials.github} target="_blank" rel="noopener noreferrer" className="text-stone-400 hover:text-white transition-transform hover:scale-110"><GithubIcon /></a>
