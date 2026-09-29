@@ -140,8 +140,8 @@ const portfolioData = {
             live: null
         },
         {
-            name: "MineMarket — Financial Markets Education Game",
-            description: "A Minecraft-based game that teaches how financial markets work. Players earn money from buying andselling goods, then unlock banking, equities, futures, and options as gameplay tiers.",
+            name: "MineMarket — Financial Markets MC Mod",
+            description: "A Minecraft Mod that teaches how financial markets work. Players earn money from buying and selling goods, then unlock banking, equities, futures, and options as gameplay tiers.",
             stack: ["Java", "Gradle", "JUnit", "Simulation", "Agentic Development"],
             highlights: [
                 "Designed the economy and progression from a written design doc: players unlock tiers from a basic Dealer through a trading floor, equities, forwards, futures with margin calls, and options.",
