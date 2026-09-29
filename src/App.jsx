@@ -140,6 +140,20 @@ const portfolioData = {
             live: null
         },
         {
+            name: "MineMarket — Financial Markets Education Game",
+            description: "A Minecraft-based game that teaches how financial markets work. Players earn money from buying andselling goods, then unlock banking, equities, futures, and options as gameplay tiers.",
+            stack: ["Java", "Gradle", "JUnit", "Simulation", "Agentic Development"],
+            highlights: [
+                "Designed the economy and progression from a written design doc: players unlock tiers from a basic Dealer through a trading floor, equities, forwards, futures with margin calls, and options.",
+                "Architected a ~26K-line Java codebase split into a Minecraft-free core (money, Dealer pricing, batch-auction order book), a headless simulation module, and a thin game layer, so market logic is tested without launching the game.",
+                "Enforced correctness with 245 unit tests and 85 in-game server tests, with invariants such as money and items entering only through explicit sources and settlement conserving totals.",
+                "Built 8 headless simulations (such as a wheat farmer unhedged vs. hedged through a 20% crash, and six companies over 20 quarters) to balance the economy before play-testing.",
+                "Directed agentic development across 10 milestones with per-milestone specs and a single check command that gates every change."
+            ],
+            link: "https://github.com/James-J-Barry/MineMarket",
+            live: null
+        },
+        {
             name: "High-Vis Grades for Gradescope",
             description: "Chrome Extension that enhances the Gradescope UI by adding weighted course average calculations.",
             stack: ["JavaScript", "Chrome APIs", "DOM Manipulation", "HTML"],
