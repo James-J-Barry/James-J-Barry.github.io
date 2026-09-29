@@ -128,19 +128,6 @@ const portfolioData = {
             live: "https://jbvolatilitysurface.streamlit.app/"
         },
         {
-            name: "Volatility Surface & Model-Divergence Engine",
-            description: "Built a quantitative platform for real-time market surface modeling, simulation, and interactive visualization.",
-            stack: ["Python", "NumPy/SciPy", "scikit-learn", "Streamlit", "Monte Carlo"],
-            highlights: [
-                "Engineered a live data pipeline ingesting, cleaning, and validating 1,000+ real-time market data records, filtering stale and illiquid inputs before feeding a numerical modeling engine.",
-                "Built a Monte Carlo simulation engine (geometric Brownian motion, antithetic variance reduction) and a Newton-Raphson/Brent numerical solver to recover latent model parameters from observed price data, validated against closed-form benchmarks.",
-                "Designed and cross-validated two competing statistical models of a live market surface — a constrained parametric fit and a gradient-boosted regression — reducing model-vs-market error by roughly 90% versus a naive baseline.",
-                "Shipped an interactive Streamlit web application exposing the platform output as a live, explorable 3D visualization."
-            ],
-            link: "https://github.com/James-J-Barry/OptionsPricingCalculator",
-            live: "https://jbvolatilitysurface.streamlit.app/"
-        },
-        {
             name: "resumeGauntlet — AI Resume Tournament",
             description: "An AI-agent pipeline that evolves the ideal one-page resume for SWE and quant intern roles.",
             stack: ["Python", "Claude", "LaTeX", "Multi-Agent Systems", "PyMuPDF"],
