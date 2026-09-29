@@ -128,6 +128,31 @@ const portfolioData = {
             live: "https://jbvolatilitysurface.streamlit.app/"
         },
         {
+            name: "Volatility Surface & Model-Divergence Engine",
+            description: "Built a quantitative platform for real-time market surface modeling, simulation, and interactive visualization.",
+            stack: ["Python", "NumPy/SciPy", "scikit-learn", "Streamlit", "Monte Carlo"],
+            highlights: [
+                "Engineered a live data pipeline ingesting, cleaning, and validating 1,000+ real-time market data records, filtering stale and illiquid inputs before feeding a numerical modeling engine.",
+                "Built a Monte Carlo simulation engine (geometric Brownian motion, antithetic variance reduction) and a Newton-Raphson/Brent numerical solver to recover latent model parameters from observed price data, validated against closed-form benchmarks.",
+                "Designed and cross-validated two competing statistical models of a live market surface — a constrained parametric fit and a gradient-boosted regression — reducing model-vs-market error by roughly 90% versus a naive baseline.",
+                "Shipped an interactive Streamlit web application exposing the platform output as a live, explorable 3D visualization."
+            ],
+            link: "https://github.com/James-J-Barry/OptionsPricingCalculator",
+            live: "https://jbvolatilitysurface.streamlit.app/"
+        },
+        {
+            name: "resumeGauntlet — AI Resume Tournament",
+            description: "An AI-agent pipeline that evolves the ideal one-page resume for SWE and quant intern roles.",
+            stack: ["Python", "Claude", "LaTeX", "Multi-Agent Systems", "PyMuPDF"],
+            highlights: [
+                "Built a multi-agent pipeline where competing writer personas draft LaTeX resumes from a master document, render the PDF, and visually self-correct layout and wording.",
+                "Added scripted gatekeeping (one-page check, ATS text-recovery and keyword coverage, fact-checking against source facts) so no invented claims reach the judges.",
+                "Designed a single-elimination tournament with scaled AI judge panels (1, 3, then 5 judges) plus an update mode where challengers must beat the reigning champion head-to-head."
+            ],
+            link: "https://github.com/James-J-Barry/resumeGauntlet",
+            live: null
+        },
+        {
             name: "High-Vis Grades for Gradescope",
             description: "Chrome Extension that enhances the Gradescope UI by adding weighted course average calculations.",
             stack: ["JavaScript", "Chrome APIs", "DOM Manipulation", "HTML"],
