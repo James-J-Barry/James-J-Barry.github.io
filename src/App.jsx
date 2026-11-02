@@ -7,12 +7,12 @@ const portfolioData = {
     // Animated hero statements to cycle through
     heroStatements: [
         "a software engineer.",
-        "building AI for finance.",
+        "building reliable AI systems.",
         "engineering data pipelines.",
-        "shipping fintech end to end.",
+        "shipping full-stack products.",
         "building tools for AI agents.",
-        "turning market data into models.",
-        "seeking 2027 internships."
+        "turning data into models.",
+        "seeking Summer 2027 internships."
     ],
     // Add the URL to your professional headshot here
     imageUrl: "/profpic.jpeg",
@@ -25,7 +25,7 @@ const portfolioData = {
         linkedin: "https://linkedin.com/in/James-J-Barry",
         portfolio: "https://jbarry.tech",
     },
-    about: "I'm a Computer Science student at the University of Maryland, minoring in Computational Finance, focused on software engineering, AI/ML systems, and scalable data workflows. I'm especially drawn to financial software engineering, building systems built on markets and financial data. My expected graduation is May 2028, and I'm actively seeking software engineering and quantitative finance internship opportunities for Summer 2027.",
+    about: "I'm a Computer Science student at the University of Maryland, minoring in Computational Finance, focused on software engineering, AI/ML systems, and scalable data workflows. I'm especially drawn to building reliable, data-intensive systems, from backend services and data pipelines to tools for AI agents. My expected graduation is May 2028, and I'm actively seeking software engineering internship opportunities for Summer 2027.",
     technicalSkills: {
         Languages: ["Python", "TypeScript", "JavaScript", "Java", "C", "Rust", "R", "MATLAB"],
         "AI & Machine Learning": ["LLM Prompt Engineering", "LLM Evaluation", "MCP", "Vector Embeddings", "NLP", "PyTorch", "scikit-learn"],
